@@ -1,9 +1,9 @@
 ---
 layout: page
-title: "About"
-permalink: /about/
-icon: fas fa-user
-order: 1
+title: "Product & UX"
+permalink: /product/
+icon: fas fa-box-open
+order: 3
 ---
 
-Hi, I'm Zihan. This is my personal website built with Jekyll + Chirpy.
+Prototypes, Figma, user interviews, and product strategy.
