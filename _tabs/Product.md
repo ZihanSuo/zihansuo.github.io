@@ -15,6 +15,8 @@ Designed to filter, rank, and summarize high-impact market news with semantic ex
 - 🛠 Tools: n8n, OpenAI, Tavily, GitHub, Streamlit  
 - 🔗 [GitHub](https://github.com/ZihanSuo/INVESTelligence) | [Live Demo](https://investelligence.streamlit.app/)
 
+<img src="/assets/img/investelligence_1.png" alt="Workflow Diagram" width="800"/>
+
 ---
 
 ### 📱 Fanzone: WeChat Mini-App for Fan Event Planning 
@@ -37,3 +39,5 @@ The project won **National 1st Prize** for its **social impact** and creative ex
 - ✨ Focus: Story-driven UX, mobile-first design, visual rhythm  
 - 🏆 Award: National 1st Prize in National College Interactive Media Contest  
 - 🔗 [View Project](https://h5.founderfx.cn/TQMS/resourceDir/20221005/0aec4d62527c4b55a1edc105e098c748/index.html?param=aAaVdz&oldOpenid=&openid=&shareSour=null)
+
+<img src="/assets/img/her_time_written_on_the_map.png" alt="Workflow Diagram" width="800"/>
