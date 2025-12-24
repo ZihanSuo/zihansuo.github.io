@@ -1,0 +1,106 @@
+/* 1. 容器：设置相对定位 */
+.timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+/* 2. 核心轴线 (就是你缺失的那根线！) */
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 4px; /* 线条宽度 */
+  background-color: var(--btn-border-color, #e9ecef); /* 适配 Chirpy 深浅色 */
+  top: 0;
+  bottom: 0;
+  left: 50%; /* 居中 */
+  margin-left: -2px; /* 修正居中偏移 */
+  z-index: 0;
+}
+
+/* 3. 单个时间块通用样式 */
+.timeline-item {
+  padding: 10px 40px;
+  position: relative;
+  background-color: inherit;
+  width: 50%; /* 占据一半宽度 */
+  box-sizing: border-box;
+}
+
+/* 4. 左侧块 */
+.left {
+  left: 0;
+  text-align: right; /* 左侧文字靠右，贴近中轴 */
+}
+
+/* 5. 右侧块 */
+.right {
+  left: 50%;
+  text-align: left; /* 右侧文字靠左，贴近中轴 */
+}
+
+/* 6. 中心圆点 (轴线上的点) */
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  right: -8px; /* 调整圆点位置到中轴线 */
+  background-color: var(--body-bg, #fff); /* 背景色，防止透出线条 */
+  border: 4px solid var(--sidebar-active-color, #007bff); /* 圆环颜色 */
+  top: 20px;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* 修正右侧块的圆点位置 */
+.right::after {
+  left: -8px;
+}
+
+/* 7. 内容框样式 (卡片) */
+.content {
+  padding: 20px;
+  background-color: var(--card-bg, #fff); /* Chirpy 卡片背景 */
+  border: 1px solid var(--btn-border-color, #ddd);
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.content h3 {
+  margin-top: 0;
+  font-size: 1.1rem;
+  color: var(--heading-color);
+}
+
+.content p {
+  margin-bottom: 0;
+  color: var(--text-color);
+}
+
+/* --- 移动端适配 (非常重要，否则手机上会乱) --- */
+@media screen and (max-width: 768px) {
+  /* 轴线移到最左边 */
+  .timeline::after {
+    left: 31px;
+  }
+  
+  /* 所有块都变成全宽 */
+  .timeline-item {
+    width: 100%;
+    padding-left: 70px; /* 给左边留出轴线位置 */
+    padding-right: 25px;
+  }
+  
+  /* 消除左右差异 */
+  .left, .right {
+    left: 0;
+    text-align: left; /* 文字统一靠左 */
+  }
+  
+  /* 修正圆点位置到左侧轴线 */
+  .left::after, .right::after {
+    left: 23px;
+  }
+}
