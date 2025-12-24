@@ -40,4 +40,4 @@ The project won **National 1st Prize** for its **social impact** and creative ex
 - 🏆 Award: National 1st Prize in National College Interactive Media Contest  
 - 🔗 [View Project](https://h5.founderfx.cn/TQMS/resourceDir/20221005/0aec4d62527c4b55a1edc105e098c748/index.html?param=aAaVdz&oldOpenid=&openid=&shareSour=null)
 
-<img src="/assets/img/her_time_written_on_the_map.png" alt="Workflow Diagram" width="800"/>
+<img src="/assets/img/her_time_written_on_the_map.png" alt="Workflow Diagram" width="600"/>
