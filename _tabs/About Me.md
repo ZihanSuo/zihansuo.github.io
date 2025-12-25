@@ -291,7 +291,7 @@ Here lies the messy, exciting, and occasionally awkward journey of a storyteller
   <div class="timeline-item left" data-aos="fade-up">
     <div class="timeline-date">Oct–Dec</div>
     <div class="content-box create">
-      <h3>🧠 Built my first real AI system.</h3>
+      <h3>🧠 Built my first real AI system</h3>
       <p>Wrapped up <strong>INVESTelligence</strong>, an AI-powered news agent filtering financial noise for new investors. Hours of prompt tweaking, data wrangling, and pipeline debugging — and I loved it.</p>
     </div>
   </div>
@@ -436,7 +436,7 @@ Here lies the messy, exciting, and occasionally awkward journey of a storyteller
   <div class="timeline-item left" data-aos="fade-up">
     <div class="timeline-date">June</div>
     <div class="content-box create">
-      <h3>📝 Feature Article: "At the night of USC, stars and I are enjoying the real freedom."</h3>
+      <h3>📝 Feature Article: <em>At the night of USC, stars and I are enjoying the real freedom</em>.</h3>
       <p>During COVID lockdown, the campus lawn became our only "social hub." We captured it all with on-the-spot sketches and vignettes. <strong>68k views in one night</strong>, and maybe a few tears.</p>
     </div>
   </div>
