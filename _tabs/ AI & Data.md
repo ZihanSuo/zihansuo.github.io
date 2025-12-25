@@ -31,6 +31,8 @@ Transfer learning model for identifying crop pests with high precision.
 - 🛠 Tools: TensorFlow, EfficientNet
 - 📎 [GitHub](https://github.com/ZihanSuo/DSCI552_Machine_Learning_Projects/tree/main/Final%20Project)
 
+---
+
 ## 📊 Data & Technical Projects
 ### The Image of China in Foreign Tourists' Video Narratives
 **A Micro-communication Analysis of YouTube Travel Vlogs under the Visa-Free Policy (Python, 2024)**
