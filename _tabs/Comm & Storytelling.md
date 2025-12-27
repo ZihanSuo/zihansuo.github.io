@@ -98,7 +98,7 @@ order: 3
 </div>
 
 
-<h2 id="pr">💄 L’Oréal PR Campaign Proposal: *Authenticity is Beauty*</h2>  
+<h2 id="pr">💄 L’Oréal PR Campaign Proposal: <em>Authenticity is Beauty</em></h2>  
 **National 1st Prize, 2025**  
 
 Led a team to design an integrated campaign combining **short films, podcasts, art therapy workshops**, and **AI-assisted co-creation tools** to reshape beauty narratives among Gen Z.  
@@ -106,7 +106,7 @@ As project lead, I conducted early-stage user research and developed the core **
 
 - Projected to reach **2M+ students** and generate **5M+ impressions**  
 - Strengthened L’Oréal’s **Gen Z engagement strategy** through multi-channel storytelling  
-- View Campaign Deck below.
+- View Campaign Deck below
 
 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
   <iframe 
@@ -120,7 +120,7 @@ As project lead, I conducted early-stage user research and developed the core **
 
 ---
 
-<h2 id="data">🌡️ Data Journalism: *Who Endures the Heatwave?*</h2>  
+<h2 id="data">🌡️ Data Journalism: <em>Who Endures the Heatwave?</em></h2>  
 **National 1st Prize, 2022**
 
 Investigated the 2022 Sichuan–Chongqing heatwave using **official data, field interviews**, and climate studies, exposing patterns of **social inequality** under extreme weather.
@@ -174,7 +174,7 @@ These articles were originally published on **WeChat Official Account**, blendin
 
 ---
 
-<h2 id="course">👟 Comparative Digital Media Analysis: *lululemon vs. Decathlon*</h2>
+<h2 id="course">👟 Comparative Digital Media Analysis: <em>lululemon vs. Decathlon</em></h2>
 **Course Research Project, 2024**
 
 Analyzed brand positioning, influencer strategy, and platform differentiation in the Chinese fitness market.  
