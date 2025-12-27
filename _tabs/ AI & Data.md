@@ -22,14 +22,19 @@ A two-layer AI financial news engine that automates newsletter generation using 
 
 ## 🐛 Machine Learning Projects
 
-### Pest Classifier
+### 1. Pest Classifier
 **Individual Project, 2025**
 Transfer learning model for identifying crop pests with high precision.
 
 - 📊 Dataset: 11 pest classes from Kaggle  
 - 📈 Accuracy: 91% (ResNet50)  
 - 🛠 Tools: TensorFlow, EfficientNet
-- 📎 [GitHub](https://github.com/ZihanSuo/DSCI552_Machine_Learning_Projects/tree/main/Final%20Project)
+- 📎 [GitHub](https://github.com/ZihanSuo/Machine_Learning_Projects/tree/main/Transfer%20Learning%20for%20Image%20Classification)
+
+### 2. When More Features Hurt: A Time-Series Classification Case Study
+**Individual Project, 2025**
+Using the **AReM human activity dataset** (multisensor wearable time series), I studied how feature engineering and temporal segmentation affect classification stability. By progressively splitting time series into finer segments, I observed improved separability up to a point—after which variance, class imbalance, and information leakage began to dominate. This project emphasizes statistical judgment over raw accuracy, highlighting when adding features helps and when it quietly harms generalization.
+- 📎 [GitHub](https://github.com/ZihanSuo/Machine_Learning_Projects/tree/main/Time-Series%20Classification%20Case%20Study)
 
 ---
 
@@ -42,4 +47,4 @@ This study analyzes YouTube vlogs posted by foreign tourists after China’s vis
 - Identified how foreign vloggers highlight modernization, technology, and cultural heritage, often from an external, observational lens.
 - Observed a sharp rise in both volume and variety of content post-policy, though audience reactions remained diverse and mixed.
 - Explored how visa-free travel reshapes China’s image construction in global digital discourse.
-- 👉 [Read Paper](https://wzmia.github.io/copywriting/)
+- 👉 [Read Paper and Code](https://github.com/ZihanSuo/Data-Projects/tree/main/Python-Online%20public%20opinion%20research)
