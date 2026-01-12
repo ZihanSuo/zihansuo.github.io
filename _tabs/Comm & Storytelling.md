@@ -148,8 +148,8 @@ These articles were originally published on **WeChat Official Account**, blendin
     <div class="card-bg" style="background-image: url('/assets/img/feature_grass.png');"></div>
     <div class="card-content">
       <h3>At the Night of RUC, stars and I are enjoying the real freedom. 教二草坪的夜里，我和星星是自由的.</h3>
-      <p>A midnight sketching piece from the lockdown era — 68k reads, tracing fragments of life on a campus turned island.教二草坪的夜里，我和星星是自由的.COVID 封校期间的深夜写生故事，记录孤岛般的校园生活。68k reads.</p>
-      <a href="https://mp.weixin.qq.com/s/plUGpofEJvCMNNxlYMkDfA" class="btn-link" target="_blank">📄 阅读全文</a>
+      <p>A midnight sketching piece from the lockdown era — 68k reads, tracing fragments of life on a campus turned island.教二草坪的夜里，我和星星是自由的.COVID 封校期间的深夜写生故事，记录孤岛般的校园生活。</p>
+      <a href="https://mp.weixin.qq.com/s/plUGpofEJvCMNNxlYMkDfA" class="btn-link" target="_blank">📄 Read Full Story</a>
     </div>
   </div>
 
@@ -157,8 +157,8 @@ These articles were originally published on **WeChat Official Account**, blendin
     <div class="card-bg" style="background-image: url('/assets/img/feature_covid.png');"></div>
     <div class="card-content">
       <h3>Flights, Pills, and Panic: 72 Hours after Policy Shift. 机票、花束和抗原试剂盒：人大防疫政策调整后的72小时</h3>
-      <p>Documented the chaos and transition in the first 72 hours after China dropped COVID controls in 2022. A ground-level report through photos, social observation and policy decoding. 记录封控末期的3天，图文并茂，时代碎片。22k reads.</p>
-      <a href="https://mp.weixin.qq.com/s/8phz9unK6foPpe0LTwDhhA" class="btn-link" target="_blank">🔗 微信原文</a>
+      <p>Documented the chaos and transition in the first 72 hours after China dropped COVID controls in 2022. A ground-level report through photos, social observation and policy decoding. 22k reads. 记录封控末期的3天，图文并茂，时代碎片</p>
+      <a href="https://mp.weixin.qq.com/s/8phz9unK6foPpe0LTwDhhA" class="btn-link" target="_blank">📄 Read Full Story</a>
     </div>
   </div>
 
@@ -166,13 +166,24 @@ These articles were originally published on **WeChat Official Account**, blendin
     <div class="card-bg" style="background-image: url('/assets/img/feature_grad.png');"></div>
     <div class="card-content">
       <h3>Where To, After Giving Up Grad School? “不被喝彩”的保研：离开人大后，我去向何方</h3>
-      <p>They gave up a guaranteed spot in a top-tier Chinese university to pursue a path with less prestige — and more self-trust. This piece reflects on China’s obsession with elite schools, and what it means to walk away from the applause. 我拥有保研资格，却选择去一所“名气不如原校”的学校。这是我对“名校光环”以及“不被喝彩”的选择的一次书写。36k reads.</p>
-      <a href="https://mp.weixin.qq.com/s/xDqvSbUMt5eNwPhwmN5Cjw" class="btn-link" target="_blank">🔗 微信原文</a>
+      <p>They gave up a guaranteed spot in a top-tier Chinese university to pursue a path with less prestige — and more self-trust. This piece reflects on China’s obsession with elite schools, and what it means to walk away from the applause. 36k reads. 我拥有保研资格，却选择去一所“名气不如原校”的学校。这是我对“名校光环”以及“不被喝彩”的选择的一次书写。</p>
+      <a href="https://mp.weixin.qq.com/s/xDqvSbUMt5eNwPhwmN5Cjw" class="btn-link" target="_blank">📄 Read Full Story</a>
     </div>
   </div>
+
+  <div class="article-card">
+    <div class="card-bg" style="background-image: url('/assets/img/feature_myz.jpeg');"></div>
+    <div class="card-content">
+      <h3>From HR to the Lens: Mao Yanzheng and a 15-Year Detour into Photography.专访毛岩政：与摄影相伴15年</h3>
+      <p>A quiet portrait of Mao Yanzheng’s fifteen-year turn from corporate HR to photography — from the moment behind the viral “RUC Goddess” image to his volunteer work at the 2022 Beijing Winter Olympics. A career revealed not by planning, but by staying with what one chooses.回溯独立摄影师毛岩政十五年的职业轨迹：从企业HR到摄影创作者，呈现个人选择、时代机遇与公共目光如何共同塑造一条非典型职业路径。 </p>
+      <a href="https://mp.weixin.qq.com/s/7frg_feE3ZPgQUXqEv35Ig" class="btn-link" target="_blank">📄 Read Full Story</a>
+    </div>
+  </div>
+
 </div>
 
 ---
+
 
 <h2 id="course">👟 Comparative Digital Media Analysis: <em>lululemon vs. Decathlon</em></h2>
 **Course Research Project, 2024**
