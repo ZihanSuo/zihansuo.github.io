@@ -13,7 +13,7 @@ Here lies the messy, exciting, and occasionally awkward journey of a storyteller
 * 🗺️ My life across 3 continents
 * 🔄 A major pivot from Journalism to Communication, and finally to Data Science
 * 💃 A quiet project: rebuilding body-mind connection through dance, outdoor sports and strength training
-* ✨ And the moments that didn't make it to the official bio.
+* ✨ And the moments that didn't make it to the official bio
 
 🎓 Curious about the highlight reel? → [View my official resume & portfolio](https://drive.google.com/drive/u/0/folders/1KBqwSg3sJHl333HyCilmj4wo8fNc4HkV)
 
