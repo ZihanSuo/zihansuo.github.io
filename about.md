@@ -148,7 +148,7 @@ Here lies the messy, exciting, and occasionally awkward journey of a storyteller
 </div>
 <div class="tl-item tl-item--create reveal">
   <p class="tl-date"><span data-lang="en">June</span><span data-lang="zh">6月</span></p>
-  <h3><span data-lang="en">📝 Feature Article: <em>At the night of USC, stars and I are enjoying the real freedom</em>.</span><span data-lang="zh">📝 特稿：《教二草坪的夜里，我和星星是自由的》</span></h3>
+  <h3><span data-lang="en">📝 Feature Article: <em>At the night of RUC, stars and I are enjoying the real freedom</em>.</span><span data-lang="zh">📝 特稿：《教二草坪的夜里，我和星星是自由的》</span></h3>
   <div data-lang="en"><p>During COVID lockdown, the campus lawn became our only "social hub." We captured it all with on-the-spot sketches and vignettes. <strong>68k views in one night</strong>, and maybe a few tears.</p></div><div data-lang="zh"><p>封校期间，草坪成了我们唯一的“社交场”。我们用现场速写和片段把它记录下来。<strong>一夜68000阅读</strong>，也许还有几滴眼泪。</p></div>
 </div>
 <div class="tl-item tl-item--create reveal">
