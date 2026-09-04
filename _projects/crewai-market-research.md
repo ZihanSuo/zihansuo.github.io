@@ -14,7 +14,7 @@ stack: "CrewAI, Python, YAML, pytest"
 tags: ["Multi-agent", "Evaluation", "Go-to-market"]
 cover: /assets/img/placeholder.png
 links:
-  - { label: "GitHub", url: "#TODO" }
+  - { label: "GitHub", url: "https://github.com/ZihanSuo/cross-border-market-entry" }
 ---
 
 <div class="callout">
