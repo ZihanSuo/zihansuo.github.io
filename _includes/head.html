@@ -1,0 +1,30 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% if page.title and page.url != "/" %}{{ page.title }} · {{ site.title }}{% else %}{{ site.title }} · {{ site.tagline_en }}{% endif %}</title>
+<meta name="description" content="{{ page.summary | default: site.description | strip_html | truncate: 160 }}">
+<link rel="canonical" href="{{ page.url | absolute_url }}">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ page.title | default: site.title }}">
+<meta property="og:description" content="{{ page.summary | default: site.description | strip_html | truncate: 160 }}">
+<meta property="og:url" content="{{ page.url | absolute_url }}">
+{% assign preview = page.cover | default: '/assets/img/social-preview.png' %}
+<meta property="og:image" content="{{ preview | absolute_url }}">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="/assets/img/favicons/favicon.ico">
+<link rel="apple-touch-icon" href="/assets/img/favicons/apple-touch-icon.png">
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+
+<script>
+  /* set language + theme before first paint, no flash */
+  (function () {
+    var d = document.documentElement;
+    d.classList.remove('no-js');
+    try {
+      d.setAttribute('data-active-lang', localStorage.getItem('lang') || 'en');
+      var t = localStorage.getItem('theme');
+      if (t) d.setAttribute('data-theme', t);
+    } catch (e) { d.setAttribute('data-active-lang', 'en'); }
+  })();
+</script>

@@ -1,27 +1,25 @@
+
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
 # Bundler cache
-.bundle
-vendor
-Gemfile.lock
-
+# IDE configurations
 # Jekyll cache
-.jekyll-cache
-.jekyll-metadata
-_site
-
+# Misc
+# NPM dependencies
 # RubyGems
 *.gem
-
-# NPM dependencies
+.bundle
+.idea
+.jekyll-cache
+.jekyll-metadata
+.preview/
+.vscode/*
+Gemfile.lock
+_sass/vendors
+_site
+_site/
+assets/js/dist
 node_modules
 package-lock.json
-
-# IDE configurations
-.idea
-.vscode/*
-!.vscode/settings.json
-!.vscode/extensions.json
-!.vscode/tasks.json
-
-# Misc
-_sass/vendors
-assets/js/dist
+vendor

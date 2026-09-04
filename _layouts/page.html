@@ -1,0 +1,24 @@
+---
+layout: default
+---
+<div class="wrap">
+  {% if page.title and page.hide_title != true %}
+  <header class="hero">
+    {% if page.eyebrow_en %}
+    <p class="eyebrow">
+      <span data-lang="en">{{ page.eyebrow_en }}</span><span data-lang="zh">{{ page.eyebrow_zh }}</span>
+    </p>
+    {% endif %}
+    <h1>
+      <span data-lang="en">{{ page.title }}</span><span data-lang="zh">{{ page.title_zh | default: page.title }}</span>
+    </h1>
+    {% if page.lede_en %}
+    <p class="lede">
+      <span data-lang="en">{{ page.lede_en }}</span><span data-lang="zh">{{ page.lede_zh }}</span>
+    </p>
+    {% endif %}
+  </header>
+  {% endif %}
+
+  {{ content }}
+</div>

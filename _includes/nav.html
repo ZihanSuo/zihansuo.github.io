@@ -1,0 +1,28 @@
+{% assign u = page.url %}
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="{{ '/' | relative_url }}">
+      <span data-lang="en">Zihan Suo</span><span data-lang="zh">索梓涵</span>
+    </a>
+
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Menu">☰</button>
+
+    <nav class="nav" id="site-nav">
+      <a href="{{ '/ai-systems/' | relative_url }}"  class="{% if u contains '/ai-systems' %}is-active{% endif %}">
+        <span data-lang="en">AI&nbsp;Systems</span><span data-lang="zh">AI 产品与系统</span></a>
+      <a href="{{ '/data-growth/' | relative_url }}" class="{% if u contains '/data-growth' %}is-active{% endif %}">
+        <span data-lang="en">Data&nbsp;&amp;&nbsp;Growth</span><span data-lang="zh">数据与增长</span></a>
+      <a href="{{ '/storytelling/' | relative_url }}" class="{% if u contains '/storytelling' %}is-active{% endif %}">
+        <span data-lang="en">Storytelling</span><span data-lang="zh">传播与叙事</span></a>
+      <a href="{{ '/about/' | relative_url }}" class="{% if u contains '/about' %}is-active{% endif %}">
+        <span data-lang="en">About</span><span data-lang="zh">关于我</span></a>
+      <a href="{{ '/resume/' | relative_url }}" class="{% if u contains '/resume' %}is-active{% endif %}">
+        <span data-lang="en">Résumé</span><span data-lang="zh">简历</span></a>
+
+      <span class="util">
+        <button id="lang-btn" type="button" title="Switch language">中文</button>
+        <button id="theme-btn" type="button" title="Switch theme" aria-label="Switch theme">◐</button>
+      </span>
+    </nav>
+  </div>
+</header>
