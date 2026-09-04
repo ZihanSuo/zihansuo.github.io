@@ -1,0 +1,35 @@
+---
+layout: default
+---
+{% assign tc = page.track | default: 'ai' %}
+<article class="project" style="--tc: var(--track-{{ tc }});">
+
+  <div class="wrap">
+    <header class="project-header">
+      <p class="kicker">
+        <span data-lang="en">{{ page.kicker_en }}</span><span data-lang="zh">{{ page.kicker_zh }}</span>
+      </p>
+      <h1>
+        <span data-lang="en">{{ page.title }}</span><span data-lang="zh">{{ page.title_zh | default: page.title }}</span>
+      </h1>
+      <p class="summary">
+        <span data-lang="en">{{ page.summary }}</span><span data-lang="zh">{{ page.summary_zh | default: page.summary }}</span>
+      </p>
+
+      <dl class="factbar">
+        {% if page.role %}<div><dt data-lang="en">Role</dt><dt data-lang="zh">角色</dt><dd>{{ page.role }}</dd></div>{% endif %}
+        {% if page.period %}<div><dt data-lang="en">Period</dt><dt data-lang="zh">时间</dt><dd>{{ page.period }}</dd></div>{% endif %}
+        {% if page.stack %}<div><dt data-lang="en">Stack</dt><dt data-lang="zh">技术栈</dt><dd>{{ page.stack }}</dd></div>{% endif %}
+        {% if page.award %}<div><dt data-lang="en">Recognition</dt><dt data-lang="zh">获奖</dt><dd>{{ page.award }}</dd></div>{% endif %}
+      </dl>
+
+      {% if page.links %}
+      <div class="pill-row">
+        {% for l in page.links %}<a class="pill" href="{{ l.url }}" {% unless l.url contains 'assets' %}target="_blank" rel="noopener"{% endunless %}>{{ l.label }}</a>{% endfor %}
+      </div>
+      {% endif %}
+    </header>
+
+    <div class="prose">{{ content }}</div>
+  </div>
+</article>

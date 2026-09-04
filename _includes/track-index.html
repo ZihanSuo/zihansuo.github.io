@@ -1,0 +1,6 @@
+{% assign list = site.projects | where: "track", include.track | sort: "weight" %}
+<section>
+  <div class="cards">
+    {% for p in list %}{% include project-card.html p=p %}{% endfor %}
+  </div>
+</section>

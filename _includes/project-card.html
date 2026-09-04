@@ -1,0 +1,19 @@
+{% assign p = include.p %}
+<article class="card reveal" style="--tc: var(--track-{{ p.track | default: 'ai' }});">
+  {% if p.cover %}<a href="{{ p.url | relative_url }}"><span class="card__thumb" style="background-image:url('{{ p.cover | relative_url }}')"></span></a>{% endif %}
+  <div class="card__body">
+    <p class="card__kicker">
+      <span data-lang="en">{{ p.kicker_en }}</span><span data-lang="zh">{{ p.kicker_zh }}</span>
+    </p>
+    <h3><a href="{{ p.url | relative_url }}">
+      <span data-lang="en">{{ p.title }}</span><span data-lang="zh">{{ p.title_zh | default: p.title }}</span>
+    </a></h3>
+    <p>
+      <span data-lang="en">{{ p.summary }}</span><span data-lang="zh">{{ p.summary_zh | default: p.summary }}</span>
+    </p>
+    <div class="card__foot">
+      {% if p.award %}<span class="tag tag--award">{{ p.award }}</span>{% endif %}
+      {% for t in p.tags %}<span class="tag">{{ t }}</span>{% endfor %}
+    </div>
+  </div>
+</article>
