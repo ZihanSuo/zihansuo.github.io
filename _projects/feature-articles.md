@@ -21,7 +21,7 @@ These articles were originally published on **WeChat Official Account**, blendin
 </div>
 
 <div data-lang="zh" markdown="1">
-待定：中文版
+本科期间我发表过多篇特稿，聚焦校园生活与社会观察。这些稿子最初发在<strong>微信公众号</strong>上，把视觉叙事和带反思性的文字放在一起。
 </div>
 
 <div class="cards">
@@ -60,4 +60,14 @@ These articles were originally published on **WeChat Official Account**, blendin
       <div class="card__foot"><span class="tag">Profile</span></div>
     </div>
   </article>
+</div>
+
+<h2><span data-lang="en">Gallery</span><span data-lang="zh">配图</span></h2>
+<p class="section-note"><span data-lang="en">Photographs and layouts from the original pieces.</span><span data-lang="zh">原稿里的照片和版面。放图的位置在这里，把图片丢进 <code>assets/img/features/</code> 就会显示。</span></p>
+
+<div class="gallery">
+  <figure><img src="/assets/img/feature_grass.png" alt="教二草坪的夜里"><figcaption>教二草坪的夜里，我和星星是自由的</figcaption></figure>
+  <figure><img src="/assets/img/feature_covid.png" alt="政策调整后的 72 小时"><figcaption>机票、花束和抗原试剂盒</figcaption></figure>
+  <figure><img src="/assets/img/feature_grad.png" alt="不被喝彩的保研"><figcaption>“不被喝彩”的保研</figcaption></figure>
+  <figure><img src="/assets/img/feature_myz.jpeg" alt="专访毛岩政"><figcaption>专访毛岩政：与摄影相伴15年</figcaption></figure>
 </div>

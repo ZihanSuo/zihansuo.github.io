@@ -280,6 +280,12 @@ figure { margin: 2rem 0; }
 figure img { border: 1px solid var(--rule); }
 figcaption { font-size: .82rem; color: var(--muted); margin-top: .6rem; text-align: center; }
 
+/* image gallery — drop files into assets/img/, they lay out automatically */
+.gallery { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); margin: 1.8rem 0 2.5rem; }
+.gallery figure { margin: 0; }
+.gallery img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border: 1px solid var(--rule); }
+.gallery figcaption { text-align: left; font-size: .8rem; margin-top: .5rem; }
+
 /* documents: never inline-iframe a PDF */
 .doc-list { display: grid; gap: .7rem; margin: 1.6rem 0; }
 .doc {
