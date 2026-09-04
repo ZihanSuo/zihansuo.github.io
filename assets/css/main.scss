@@ -7,26 +7,27 @@
    ============================================================= */
 
 :root {
-  /* warm paper palette */
-  --bg:          #FBF9F6;
-  --bg-tint:     #F5F1EB;
+  --bg:          #FCFAF2;
+  --bg-tint:     #F3EBD4;
   --surface:     #FFFFFF;
-  --ink:         #23201D;
-  --ink-soft:    #4A443E;
-  --muted:       #7A716A;
-  --rule:        #E4DDD4;
-  --accent:      #B5533C;
-  --accent-soft: #F2E5E0;
-  --accent-ink:  #8E3D2B;
+  --ink:         #33302A;
+  --ink-soft:    #555046;
+  --muted:       #8B8574;
+  --rule:        #E6DFCB;
+  --accent:      #4F8880;
+  --accent-soft: #DFF1EC;
+  --accent-ink:  #3D6E67;
 
   /* line tags — one hue per career track */
-  --track-ai:    #B5533C;
-  --track-data:  #4A7C6F;
-  --track-story: #9A6B3F;
+  --track-ai:    #4F8880;
+  --track-data:  #7D7550;
+  --track-story: #8C6A62;
 
-  --serif: Georgia, "Iowan Old Style", "Source Han Serif SC", "Songti SC", "SimSun", serif;
+  /* Latin runs Georgia; CJK falls through to PingFang — never Iowan, never Songti */
+  --serif: Georgia, "Times New Roman", "PingFang SC", "HarmonyOS Sans SC",
+           "Hiragino Sans GB", "Microsoft YaHei", serif;
   --sans:  -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
-           "Hiragino Sans GB", "Microsoft YaHei", Roboto, sans-serif;
+           "HarmonyOS Sans SC", "Hiragino Sans GB", "Microsoft YaHei", Roboto, sans-serif;
   --mono:  "SF Mono", ui-monospace, Menlo, Consolas, monospace;
 
   --measure: 68ch;
@@ -37,38 +38,38 @@
 
 @media (prefers-color-scheme: dark) {
   html:not([data-theme="light"]) {
-  --bg:          #16140F;
-  --bg-tint:     #1D1A15;
-  --surface:     #201C17;
-  --ink:         #EFE9E1;
-  --ink-soft:    #D3CBC1;
-  --muted:       #9E948A;
-  --rule:        #322C25;
-  --accent:      #E08A6E;
-  --accent-soft: #33251F;
-  --accent-ink:  #F0A98F;
-  --track-ai:    #E08A6E;
-  --track-data:  #7FB5A5;
-  --track-story: #D0A063;
-  --shadow:      0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+  --bg:          #16150F;
+  --bg-tint:     #1F1D17;
+  --surface:     #221F18;
+  --ink:         #F0EAD6;
+  --ink-soft:    #D3CCB8;
+  --muted:       #9C9482;
+  --rule:        #333028;
+  --accent:      #8FB9B1;
+  --accent-soft: #202A27;
+  --accent-ink:  #A9CFC8;
+  --track-ai:    #8FB9B1;
+  --track-data:  #C4B383;
+  --track-story: #C69C90;
+  --shadow:      0 1px 2px rgba(0,0,0,.32), 0 8px 24px rgba(0,0,0,.26);
   }
 }
 
 :root[data-theme="dark"] {
-  --bg:          #16140F;
-  --bg-tint:     #1D1A15;
-  --surface:     #201C17;
-  --ink:         #EFE9E1;
-  --ink-soft:    #D3CBC1;
-  --muted:       #9E948A;
-  --rule:        #322C25;
-  --accent:      #E08A6E;
-  --accent-soft: #33251F;
-  --accent-ink:  #F0A98F;
-  --track-ai:    #E08A6E;
-  --track-data:  #7FB5A5;
-  --track-story: #D0A063;
-  --shadow:      0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+  --bg:          #16150F;
+  --bg-tint:     #1F1D17;
+  --surface:     #221F18;
+  --ink:         #F0EAD6;
+  --ink-soft:    #D3CCB8;
+  --muted:       #9C9482;
+  --rule:        #333028;
+  --accent:      #8FB9B1;
+  --accent-soft: #202A27;
+  --accent-ink:  #A9CFC8;
+  --track-ai:    #8FB9B1;
+  --track-data:  #C4B383;
+  --track-story: #C69C90;
+  --shadow:      0 1px 2px rgba(0,0,0,.32), 0 8px 24px rgba(0,0,0,.26);
 }
 
 /* ---------- reset ---------- */
