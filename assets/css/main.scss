@@ -280,6 +280,12 @@ figure { margin: 2rem 0; }
 figure img { border: 1px solid var(--rule); }
 figcaption { font-size: .82rem; color: var(--muted); margin-top: .6rem; text-align: center; }
 
+/* inline numeric annotation inside tables */
+.num { font-family: var(--mono); font-size: .78em; color: var(--muted);
+       margin-left: .45em; font-variant-numeric: tabular-nums; }
+.stage ul { padding-left: 1.2rem; }
+.stage li { margin-bottom: .5rem; }
+
 /* image gallery — drop files into assets/img/, they lay out automatically */
 .gallery { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); margin: 1.8rem 0 2.5rem; }
 .gallery figure { margin: 0; }
