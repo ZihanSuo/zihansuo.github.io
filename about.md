@@ -68,7 +68,7 @@ Here lies the messy, exciting, and occasionally awkward journey of a storyteller
 <div class="tl-item tl-item--create reveal">
   <p class="tl-date"><span data-lang="en">Oct–Dec</span><span data-lang="zh">10月–12月</span></p>
   <h3><span data-lang="en">🧠 Built my first real AI system</span><span data-lang="zh">🧠 做出了第一个真正意义上的 AI 系统</span></h3>
-  <div data-lang="en"><p><strong>INVESTelligence</strong>, the first AI agent I built end to end on my own, on n8n. It filters financial noise for new investors, starting with me. Hours of prompt tweaking, data wrangling and pipeline debugging, and I loved it.</p><p><em>(More on this one to come.)</em></p></div><div data-lang="zh"><p><strong>INVESTelligence</strong>，用 n8n 做的、真正意义上第一个我独立完成的 AI agent。它帮的是刚开始尝试投资的我自己。改提示词、清数据、调流水线，耗掉无数个小时，我很喜欢干这件事。</p><p><em>（待补充）</em></p></div>
+  <div data-lang="en"><p><strong>INVESTelligence</strong>, the first AI agent I built end to end on my own, on n8n. It filters financial noise for new investors, starting with me. Hours of prompt tweaking, data wrangling and pipeline debugging, and I loved it.</p></div><div data-lang="zh"><p><strong>INVESTelligence</strong>，用 n8n 做的、真正意义上第一个我独立完成的 AI agent。它帮的是刚开始尝试投资的我自己。改提示词、清数据、调流水线，耗掉无数个小时，我很喜欢干这件事。</p></div>
 </div>
 <div class="tl-item tl-item--study reveal">
   <p class="tl-date"><span data-lang="en">Aug</span><span data-lang="zh">8月</span></p>

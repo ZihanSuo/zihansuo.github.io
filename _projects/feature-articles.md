@@ -6,8 +6,8 @@ featured: false
 weight: 4
 kicker_en: "Long-form Reporting · 2020–2023"
 kicker_zh: "特稿写作 · 2020–2023"
-summary: "Four published features on campus life and social observation, originally on WeChat Official Account — 22k to 68k reads each."
-summary_zh: "待定"
+summary: "Four published features on campus life and social observation, originally on WeChat Official Account (22k to 68k reads each)."
+summary_zh: "四篇发在微信公众号上的特稿，写校园生活和社会观察，单篇阅读量2.2万到6.8万。"
 role: "Reporter & writer"
 period: "2020–2023"
 tags: ["Feature writing", "WeChat"]
@@ -67,7 +67,7 @@ These articles were originally published on **WeChat Official Account**, blendin
 
 <div class="gallery">
   <figure><img src="/assets/img/feature_grass.png" alt="教二草坪的夜里"><figcaption>教二草坪的夜里，我和星星是自由的</figcaption></figure>
-  <figure><img src="/assets/img/feature_covid.png" alt="政策调整后的 72 小时"><figcaption>机票、花束和抗原试剂盒</figcaption></figure>
+  <figure><img src="/assets/img/feature_covid.png" alt="政策调整后的72小时"><figcaption>机票、花束和抗原试剂盒</figcaption></figure>
   <figure><img src="/assets/img/feature_grad.png" alt="不被喝彩的保研"><figcaption>“不被喝彩”的保研</figcaption></figure>
   <figure><img src="/assets/img/feature_myz.jpeg" alt="专访毛岩政"><figcaption>专访毛岩政：与摄影相伴15年</figcaption></figure>
 </div>

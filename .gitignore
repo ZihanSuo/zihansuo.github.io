@@ -9,6 +9,7 @@
 # NPM dependencies
 # RubyGems
 *.gem
+.DS_Store
 .bundle
 .idea
 .jekyll-cache
