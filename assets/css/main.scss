@@ -280,6 +280,29 @@ figure { margin: 2rem 0; }
 figure img { border: 1px solid var(--rule); }
 figcaption { font-size: .82rem; color: var(--muted); margin-top: .6rem; text-align: center; }
 
+/* portrait app screenshots — mixed source ratios, framed to a common height */
+.screens {
+  display: grid; gap: 1.1rem; margin: 1.8rem 0 2.4rem;
+  grid-template-columns: repeat(4, 1fr);
+}
+@media (max-width: 900px) { .screens { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 460px) { .screens { grid-template-columns: 1fr; gap: 1.4rem; } }
+.screens figure { margin: 0; display: flex; flex-direction: column; }
+.screens .shot {
+  background: var(--bg-tint); border: 1px solid var(--rule); border-radius: 14px;
+  padding: .5rem; aspect-ratio: 3 / 5.4; display: flex; align-items: center; justify-content: center;
+  overflow: hidden; transition: border-color .2s ease, transform .2s ease;
+}
+.screens figure:hover .shot { border-color: var(--accent); transform: translateY(-3px); }
+.screens .shot img {
+  max-width: 100%; max-height: 100%; width: auto; height: auto;
+  border: 0; border-radius: 8px; box-shadow: 0 2px 10px rgba(35,32,29,.10);
+}
+.screens figcaption {
+  margin-top: .65rem; text-align: left; font-size: .8rem; color: var(--muted); line-height: 1.5;
+}
+.screens figcaption strong { display: block; color: var(--ink); font-weight: 600; font-size: .86rem; margin-bottom: .1rem; }
+
 /* inline numeric annotation inside tables */
 .num { font-family: var(--mono); font-size: .78em; color: var(--muted);
        margin-left: .45em; font-variant-numeric: tabular-nums; }
