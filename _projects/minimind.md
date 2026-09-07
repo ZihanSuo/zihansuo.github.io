@@ -2,7 +2,7 @@
 title: "MiniMind: Training a Language Model From Scratch"
 title_zh: "MiniMind：从零训练一个语言模型"
 track: ai
-featured: true
+featured: false
 weight: 3
 kicker_en: "Individual Project · 2026 · Pretrain / SFT / LoRA"
 kicker_zh: "个人项目 · 2026 · Pretrain / SFT / LoRA"
