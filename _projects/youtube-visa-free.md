@@ -2,7 +2,7 @@
 title: "The Image of China in Foreign Tourists' Video Narratives"
 title_zh: "外国游客视频叙事中的中国形象"
 track: data
-featured: true
+featured: false
 weight: 2
 kicker_en: "Research Project · 2024 · Python"
 kicker_zh: "研究项目 · 2024 · Python"
