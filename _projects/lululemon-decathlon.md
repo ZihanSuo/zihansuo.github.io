@@ -30,7 +30,7 @@ Compared **WeChat**, **Xiaohongshu**, and **Mini Programs** to evaluate how each
 </div>
 
 <div class="doc-list">
-  <a class="doc" href="/assets/pdf/Comparative Digital Media Analysis_ lululemon vs. Decathlon.pdf" target="_blank" rel="noopener">
+  <a class="doc" href="/assets/pdf/lululemon-vs-decathlon.pdf" target="_blank" rel="noopener">
     <span class="doc__icon">PDF</span>
     <span class="doc__name">Comparative Digital Media Analysis: Full Report</span>
     <span class="doc__meta">Open</span>

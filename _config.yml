@@ -13,6 +13,8 @@ description: >-
 url: "https://zihansuo.github.io"
 baseurl: ""
 
+social_preview_image: /assets/img/social-preview.png
+
 email: suo.zihan@foxmail.com
 email_alt: zsuo@usc.edu
 github_username: ZihanSuo
@@ -56,8 +58,11 @@ exclude:
   - Gemfile.lock
   - LICENSE
   - README.md
+  - HANDOFF.md
   - tools
   - vendor
+  - _to_delete
+  - .preview
   - .devcontainer
   - .vscode
   - "*.gem"
