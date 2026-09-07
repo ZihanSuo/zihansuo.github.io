@@ -6,246 +6,110 @@ featured: true
 weight: 3
 kicker_en: "Individual Project · 2026 · Pretrain / SFT / LoRA"
 kicker_zh: "个人项目 · 2026 · Pretrain / SFT / LoRA"
-summary: "I reproduced the full MiniMind pipeline, then used a frozen eval set to check what actually changed. A weak base plus 200k SFT mostly learned the shell of a conversation, not a smarter model."
-summary_zh: "我把 MiniMind 的 Pretrain、SFT、LoRA 全流程跑通，再用固定评测去看到底变了什么。弱基座加20万条 SFT 主要学到的是对话的壳子，不是变聪明。"
+summary: "A 64M model taken through pretraining, SFT and LoRA on one Kaggle GPU. The goal was never a good model. It was to find out which problems training actually solves, and the answer is narrower than the literature made it sound."
+summary_zh: "在单卡 Kaggle 上把一个64M模型完整跑过 Pretrain、SFT、LoRA。目标从来不是得到一个好模型，而是搞清楚训练究竟能解决哪一类问题。答案比文献读起来要窄。"
 role: "Solo"
-period: "2026-06"
+period: "2026.06"
 stack: "PyTorch, Kaggle T4, DDP, LoRA"
-tags: ["Pretraining", "SFT", "LoRA"]
+tags: ["Pretraining", "SFT", "LoRA", "Evaluation"]
 ---
 
 <div class="stage">
-<h2><span data-lang="en">The problem</span><span data-lang="zh">问题是什么</span></h2>
+<h2><span data-lang="en">Why I built it</span><span data-lang="zh">起因</span></h2>
 
 <div data-lang="en">
-<p>The version of this project that writes itself is: I trained a 64M language model from scratch. Loss went down. After SFT it started answering like an assistant. That is the version I would have shipped, if I had let the training log be the result.</p>
-<p>The actual failure is simpler. <strong>Falling loss and assistant-shaped replies are not evidence that the model got smarter.</strong> On a weak pretrained base, 200k SFT can learn the shell of a conversation (the greeting, the code fence, the "as an AI" posture) while facts, reasoning and translation stay wrong, or get worse. If the eval set is not frozen before you train, you cannot tell those two things apart, and the write-up becomes a success story about a model that still cannot do the task.</p>
+<p>Reading about pretraining, SFT and PEFT leaves a gap: which stage is responsible for which capability. Papers report benchmark deltas, not attribution. Running the full chain once, on a model small enough to finish, is the cheapest way to find out.</p>
+<p>The deliverable was therefore never a usable chatbot. It was a set of statements about what each stage does and does not change.</p>
 </div>
 
 <div data-lang="zh">
-<p>这个项目有一个会自己长出来的版本：我从零训了一个64M语言模型。loss降了。SFT之后它开始像助手那样回答。如果我让训练日志充当结果，交出去的就会是这一版。</p>
-<p>真正的失败更简单。<strong>loss在降、回复开始像助手，都不是模型变聪明的证据。</strong>弱预训练基座上，20万条 SFT 可以只学到对话的壳子（开场白、代码块、“作为 AI”的姿态），事实、推理、翻译照样错，有的还会更差。如果不在开训前把评测集冻住，这两件事分不开，写出来就会是一个成功故事，而模型仍然不会做那道题。</p>
+<p>读 Pretrain、SFT、PEFT 的材料会留下一个缺口：哪一个阶段负责哪一类能力。论文报告的是 benchmark 差值，不是归因。把完整链路在一个小到能跑完的模型上走一遍，是弄清这件事最便宜的方式。</p>
+<p>因此产出目标从一开始就不是一个可用的对话模型，而是一组关于"每个阶段改变了什么、没改变什么"的判断。</p>
 </div>
 </div>
 
 <div class="stage">
-<h2><span data-lang="en">The call I made</span><span data-lang="zh">我做的判断</span></h2>
+<h2><span data-lang="en">My approach</span><span data-lang="zh">思路</span></h2>
 
 <div data-lang="en">
-<p>I stopped treating the loss curve as the outcome, and made four decisions that the rest of the project had to follow.</p>
+<p><strong>Fix the evaluation before running anything.</strong> Eight prompts and a fixed decoding configuration, frozen on day one, covering assistant framing, factual recall, reasoning, translation, formatting and repetition. Loss alone cannot distinguish "sounds more like an assistant" from "is more correct", and those turned out to be exactly the two things that diverge.</p>
+<p><strong>Change one variable per stage.</strong> Pretrain at 10k first to prove the loop runs, then scale to 200k. SFT on the self-trained base. LoRA on top. Nothing else moves between comparisons.</p>
+<p><strong>Include an upper bound.</strong> The author's released <code>full_sft</code> checkpoint runs the same eight prompts. Without it, a weak result is unattributable: a bad script and an undertrained base look identical from the output side.</p>
+<p><strong>Pick a narrow task for LoRA.</strong> Identity injection, roughly 91 samples, rather than a broad capability target. The question being tested is whether the PEFT mechanism engages at all, and a narrow task answers it cleanly.</p>
 </div>
+
 <div data-lang="zh">
-<p>我不再把 loss 曲线当成结果，后面的实验都按这四条来。</p>
-</div>
-
-<div class="callout">
-  <p class="label"><span data-lang="en">What I would actually measure</span><span data-lang="zh">到底量什么</span></p>
-  <p><span data-lang="en"><strong>A frozen set of eight prompts, scored by what changed in the text.</strong> Format, repetition, factual errors, whether it sounds like an assistant. Loss can fall while all of those stay the same.</span><span data-lang="zh"><strong>冻住8条prompt，看文本里到底变了什么。</strong>格式、复读、事实错误、像不像助手。loss可以一直降，这些可以一动不动。</span></p>
-</div>
-
-<div data-lang="en">
-<p>The other three were about what not to compare against. I would not declare SFT a success because the new checkpoint looked better than the last one I trained. The ceiling was the author's <code>full_sft</code> weight, run on the same eight prompts. If my pipeline could not get near that ceiling, the gap was in data and scale, not in a missing line of training code. And LoRA would be tested as a narrow job (identity), not as proof that PEFT made the model generally better.</p>
-<p>Early on I ran the author's checkpoint to confirm the environment and the inference path worked at all. I kept that run out of the self-trained chain. Mixing them would have let a working demo pretend to be a working training pipeline.</p>
-</div>
-<div data-lang="zh">
-<p>另外三条是关于不要跟谁比。我不会因为新 checkpoint 比我自己上一版好看，就宣布 SFT 成功。上界是作者的 <code>full_sft</code> 权重，同一套8条prompt。如果我的流水线靠近不了这条上界，差距就在数据和规模，不在训练脚本少写了一行。LoRA 只拿来测窄任务（身份），不当成“做了 PEFT 所以整体更强”的证据。</p>
-<p>早期我先用作者的权重跑通过环境和推理链路，确认这两样是好的。那次跑不算进自训链路。混在一起的话，一个能用的 demo 会假装成一条能用的训练流水线。</p>
-</div>
-</div>
-
-<div class="stage">
-<h2><span data-lang="en">How it works</span><span data-lang="zh">怎么做的</span></h2>
-
-<div data-lang="en">
-<p>MiniMind is a 64M model. I ran it on Kaggle Tesla T4s, single card then two-card DDP. Four stages, one frozen eval:</p>
-</div>
-<div data-lang="zh">
-<p>MiniMind 是64M。跑在 Kaggle 的 Tesla T4 上，先单卡再双卡 DDP。四个阶段，评测集始终同一套：</p>
+<p><strong>先定评测，再跑任何东西。</strong>8条固定 prompt 加固定解码参数，第一天冻结，覆盖助手化表述、事实召回、推理、翻译、格式与复读。只看 loss 无法区分"更像助手"与"更正确"，而后来发现分叉恰好就在这两者之间。</p>
+<p><strong>每个阶段只改一个变量。</strong>Pretrain 先跑10k验证链路通畅，再扩到20万条；SFT 基于自训基座；LoRA 叠在其上。对照之间不动其他任何设置。</p>
+<p><strong>设置上界对照。</strong>作者发布的 <code>full_sft</code> 权重跑同一套8条 prompt。没有这个对照，弱结果无法归因：脚本写错与基座训练不足，从输出侧看完全一样。</p>
+<p><strong>LoRA 选窄任务。</strong>身份注入，约91条样本，而非宽泛的能力目标。要检验的问题是 PEFT 机制是否生效，窄任务能给出干净的答案。</p>
 </div>
 
 <table>
 <thead><tr>
   <th><span data-lang="en">Stage</span><span data-lang="zh">阶段</span></th>
-  <th><span data-lang="en">Script / data</span><span data-lang="zh">脚本 / 数据</span></th>
+  <th><span data-lang="en">Data</span><span data-lang="zh">数据</span></th>
   <th><span data-lang="en">Base</span><span data-lang="zh">基座</span></th>
-  <th><span data-lang="en">Artifact</span><span data-lang="zh">产物</span></th>
+  <th><span data-lang="en">Output</span><span data-lang="zh">产物</span></th>
 </tr></thead>
 <tbody>
-<tr>
-  <td>B1 Pretrain</td>
-  <td><code>train_pretrain.py</code><br><code>pretrain_t2t_mini</code> (10k, then 200k)</td>
-  <td><code>from_weight=none</code></td>
-  <td><code>pretrain_b2_768.pth</code></td>
-</tr>
-<tr>
-  <td>B2 SFT</td>
-  <td><code>train_full_sft.py</code><br><code>sft_mainline_200k</code> (random sample)</td>
-  <td>my <code>pretrain_b2</code></td>
-  <td><code>full_sft_b2_768.pth</code> (~131MB)</td>
-</tr>
-<tr>
-  <td>B3 LoRA</td>
-  <td><code>train_lora.py</code><br><code>lora_identity.jsonl</code> (~91 rows)</td>
-  <td>author's <code>full_sft</code></td>
-  <td><code>lora_identity_768.pth</code> (0.76MB)</td>
-</tr>
-<tr>
-  <td><span data-lang="en">Ceiling</span><span data-lang="zh">上界对照</span></td>
-  <td><code>run_eval</code> · frozen 8 prompts</td>
-  <td>author's <code>full_sft</code></td>
-  <td><code>author_full_sft_eval.json</code></td>
-</tr>
+<tr><td>Pretrain</td><td><code>pretrain_t2t_mini</code> 10k → 200k</td><td><span data-lang="en">none</span><span data-lang="zh">无</span></td><td><code>pretrain_b2_768.pth</code></td></tr>
+<tr><td>SFT</td><td><code>sft_mainline_200k</code></td><td>pretrain_b2</td><td><code>full_sft_b2_768.pth</code> <span class="num">131 MB</span></td></tr>
+<tr><td>LoRA</td><td><code>lora_identity.jsonl</code> <span class="num">91</span></td><td><span data-lang="en">author's full_sft</span><span data-lang="zh">作者 full_sft</span></td><td><code>lora_identity_768.pth</code> <span class="num">0.76 MB</span></td></tr>
+<tr><td><span data-lang="en">Upper bound</span><span data-lang="zh">上界对照</span></td><td><span data-lang="en">same 8 prompts</span><span data-lang="zh">同一组8条 prompt</span></td><td><span data-lang="en">author's full_sft</span><span data-lang="zh">作者 full_sft</span></td><td><code>author_full_sft_eval.json</code></td></tr>
 </tbody>
 </table>
-
-<div data-lang="en">
-<p>Pretrain loss is next-token over almost the whole sequence (pad masked). SFT loss is mostly on the assistant turns. That is why you cannot take the pretrain 200k and "just SFT on it": the files are different formats, and the labels mean different things. LoRA freezes <em>W</em> and trains a low-rank update. It is a small file on purpose. It is not a substitute for a full SFT, and I did not treat the 0.76MB as a smaller, cheaper version of the 131MB.</p>
-</div>
-<div data-lang="zh">
-<p>Pretrain 的 loss 是几乎全文的 next-token（pad 不算）。SFT 的 loss 主要落在助手回复上。所以不能拿 pretrain 那20万条“直接拿来做 SFT”：文件格式不同，label 的含义也不同。LoRA 冻结 <em>W</em>，只训一个低秩更新。文件小是设计如此。它不是全量 SFT 的替代品，我没有把0.76MB当成131MB的便宜缩小版。</p>
-</div>
 </div>
 
 <div class="stage">
-<h2><span data-lang="en">How I tested it</span><span data-lang="zh">怎么验的</span></h2>
+<h2><span data-lang="en">What it produced</span><span data-lang="zh">成果</span></h2>
 
 <div data-lang="en">
-<p>The eight prompts never moved. What I did not do, and should have done on day one, is fix the decode settings up front and write down that only one variable changes per stage. The one decode change I made came after SFT, <code>repetition_penalty=1.15</code>, as a single-variable check: repetition eased, knowledge did not move.</p>
-<p>The eval path itself almost lied to me. Running <code>run_eval</code> from the <code>trainer/</code> directory, with <code>load_from="model"</code>, sent Hugging Face a repo name that does not exist. The error was 401. It looks like an auth problem. It was a working directory problem. A 401 here does not mean the weight is broken. It means the measuring instrument pointed at the internet instead of the disk.</p>
-<p>The other trap I actually hit: I built <code>sft_mainline_200k.jsonl</code> and then pointed the trainer at a <code>520k</code> path, then a <code>50k</code> path. The run would have been clean, and the comparison would have been against the wrong file. After that, <code>ls</code> and <code>wc -l</code> became a step, not a habit I remembered after the fact.</p>
+<p><strong>Pretrain.</strong> At 10k, loss falls from about 7.7 to 4.3 and the loop is confirmed working. Scaled to 200k with two-card DDP it trains for hours without incident. <code>logits_loss == loss</code> throughout, as expected with MoE off and <code>aux_loss</code> at zero.</p>
+<p><strong>SFT on that base.</strong> Weights come out normal. Against the eight prompts, held next to the pretrain checkpoint:</p>
+<ul>
+<li>Improved: assistant framing on Q1, occasional correct code-block formatting on Q4.</li>
+<li>Unchanged or worse: Q2, Q3 and Q6 still wrong on both fact and reasoning; Q5 translation sometimes better <em>before</em> SFT; Q7 introduces meta-commentary such as "the user is asking me to write"; repetition remains obvious.</li>
+<li>Adding <code>repetition_penalty=1.15</code> reduces the repetition and moves nothing else.</li>
+</ul>
+<p><strong>Upper bound.</strong> The author's checkpoint is better across Q3, Q7 and Q8 in both format and content, and still fabricates, confusing Jay Chou with a fourth-century calligrapher on Q2. The gap between the two chains is in pretraining data and scale, not in the training scripts.</p>
+<p><strong>LoRA.</strong> On identity prompts the injection works: a generic assistant self-description becomes a specific small-model identity. On everything else it does not move. The relationship-to-OpenAI prompt is still fabricated, just differently, and general knowledge is unchanged.</p>
 </div>
+
 <div data-lang="zh">
-<p>8条prompt没有改过。我没做、而且第一天就该做的，是把解码参数一起固定下来，并写明每个阶段只改一个变量。唯一一次解码改动发生在 SFT 之后，<code>repetition_penalty=1.15</code>，作为单变量检查：复读轻了，知识没有涨。</p>
-<p>评测路径本身差点骗我。在 <code>trainer/</code> 目录下跑 <code>run_eval</code>，<code>load_from="model"</code> 会被当成 Hugging Face 仓库名去网上拉一个不存在的库。报错是401。看起来像鉴权问题，其实是工作目录问题。这里的401不表示权重坏了，表示量尺指到了网上，而不是磁盘上。</p>
-<p>另一个我真实踩过的坑：建好了 <code>sft_mainline_200k.jsonl</code>，训练脚本却先指向 <code>520k</code> 路径，再指向 <code>50k</code>。训练会很干净，对比的却是错文件。从那以后，<code>ls</code> 和 <code>wc -l</code> 变成步骤，不是事后才想起来的习惯。</p>
-</div>
-</div>
-
-<div class="stage">
-<h2><span data-lang="en">Evidence</span><span data-lang="zh">结果和证据</span></h2>
-
-<div data-lang="en">
-<p>On the 10k pretrain smoke run, loss fell from about 7.7 to 4.3, which only means the loop ran. Cross-entropy can sit above 1 for a long time (<code>-log(0.1)</code> is already 2.3). <code>logits_loss == loss</code> because MoE was off and <code>aux_loss=0</code>. None of that is a quality claim. Scaling to 200k on two T4s was slow, hours not minutes, and still not the result.</p>
-<p>The result is the frozen eight, my <code>pretrain_b2</code> against my <code>full_sft_b2</code>:</p>
-</div>
-<div data-lang="zh">
-<p>1万条的 pretrain 冒烟跑，loss 大约从7.7降到4.3，这只说明循环是通的。交叉熵长期大于1很正常（<code>-log(0.1)</code> 已经是2.3）。<code>logits_loss == loss</code> 是因为没开 MoE，<code>aux_loss=0</code>。这些都不是质量主张。扩到20万、双卡 T4，耗时是数小时不是几分钟，那也还不是结果。</p>
-<p>结果是冻住的那8条，我的 <code>pretrain_b2</code> 对上我的 <code>full_sft_b2</code>：</p>
-</div>
-
-<table>
-<thead><tr>
-  <th><span data-lang="en">What I looked at</span><span data-lang="zh">看什么</span></th>
-  <th><span data-lang="en">After SFT</span><span data-lang="zh">SFT 之后</span></th>
-</tr></thead>
-<tbody>
-<tr>
-  <td>Q1</td>
-  <td><span data-lang="en">More like an assistant.</span><span data-lang="zh">更像助手。</span></td>
-</tr>
-<tr>
-  <td>Q4</td>
-  <td><span data-lang="en">Occasionally produced a code block.</span><span data-lang="zh">偶尔出现 code block 格式。</span></td>
-</tr>
-<tr>
-  <td>Q2 / Q3 / Q6</td>
-  <td><span data-lang="en">Facts and reasoning still wrong.</span><span data-lang="zh">事实和推理仍然错。</span></td>
-</tr>
-<tr>
-  <td>Q5 (translation)</td>
-  <td><span data-lang="en">The pretrained checkpoint was sometimes better.</span><span data-lang="zh">预训练那个 checkpoint 有时更好。</span></td>
-</tr>
-<tr>
-  <td>Q7</td>
-  <td><span data-lang="en">Started talking about the user ("the user asked me to write…").</span><span data-lang="zh">开始说“用户让我写…”这种元话语。</span></td>
-</tr>
-<tr>
-  <td><span data-lang="en">Repetition</span><span data-lang="zh">复读</span></td>
-  <td><span data-lang="en">Still obvious, until <code>repetition_penalty=1.15</code>. Then it eased. Knowledge did not move.</span><span data-lang="zh">仍然明显，直到 <code>repetition_penalty=1.15</code>。然后轻了。知识没有动。</span></td>
-</tr>
-</tbody>
-</table>
-
-<div class="callout">
-  <p class="label"><span data-lang="en">What that table is allowed to say</span><span data-lang="zh">这张表被允许说的话</span></p>
-  <p><span data-lang="en"><strong>A weak base plus 200k SFT mostly learned the shell of a conversation, not a smarter model.</strong> Two prompts looked more like products. The rest did not get better, and one got a worse habit. "Loss went down" does not appear in this table, because it does not belong here.</span><span data-lang="zh"><strong>弱基座加20万条 SFT，主要学到的是对话的壳子，不是变聪明。</strong>两条看起来更像成品。其余没有变好，一条还多了坏习惯。“loss降了”不出现在这张表里，因为它不属于这里。</span></p>
-</div>
-
-<div data-lang="en">
-<p>The author's <code>full_sft</code>, same eight prompts, is better as a whole: Q3, Q7 and Q8 are closer to the task in both format and content. It still fabricates. On Q2 it mixed Jay Chou with Wang Xizhi. So the ceiling is real, and it is not "correct". The gap between my chain and that ceiling is data and training scale. It is not a bug in the scripts. I know the scripts ran, because the author's weight runs on them.</p>
-<p>Identity LoRA went on the author's <code>full_sft</code>, not on my weak SFT. That was deliberate: if identity injection failed on a capable base, I would have been measuring the adapter against a broken floor.</p>
-</div>
-<div data-lang="zh">
-<p>作者的 <code>full_sft</code>，同一套8条，整体更好：Q3、Q7、Q8 的格式和内容都更接近任务。它仍然会胡编。Q2 把周杰伦和王羲之搅在一起。所以上界是真的，上界也不是“正确”。我这条链路和这条上界之间的差距，在数据和训练规模，不在脚本写错。脚本能跑，是因为作者的权重在同一套脚本上能跑。</p>
-<p>Identity LoRA 打在作者的 <code>full_sft</code> 上，不打在我那个弱 SFT 上。这是故意的：如果身份注入在一个能用的基座上失败，我量到的就是适配器和一个坏地板之间的差。</p>
-</div>
-
-<table>
-<thead><tr>
-  <th>Prompt</th>
-  <th><span data-lang="en">Before LoRA</span><span data-lang="zh">LoRA 前</span></th>
-  <th><span data-lang="en">After</span><span data-lang="zh">LoRA 后</span></th>
-  <th><span data-lang="en">Call</span><span data-lang="zh">判断</span></th>
-</tr></thead>
-<tbody>
-<tr>
-  <td><span data-lang="en">Introduce yourself in one sentence</span><span data-lang="zh">一句话介绍自己</span></td>
-  <td><span data-lang="en">Generic assistant talk</span><span data-lang="zh">泛化的 AI 助手话术</span></td>
-  <td><span data-lang="en">Names jingyaogong / small-model positioning</span><span data-lang="zh">带 jingyaogong / 小参数模型定位</span></td>
-  <td><span data-lang="en">Identity injection worked</span><span data-lang="zh">身份注入有效</span></td>
-</tr>
-<tr>
-  <td><span data-lang="en">Who are you</span><span data-lang="zh">你是谁</span></td>
-  <td><span data-lang="en">Already had jingyaogong</span><span data-lang="zh">已经有 jingyaogong</span></td>
-  <td><span data-lang="en">Slightly longer wording</span><span data-lang="zh">表述略扩展</span></td>
-  <td><span data-lang="en">Small change</span><span data-lang="zh">变化小</span></td>
-</tr>
-<tr>
-  <td><span data-lang="en">Relation to OpenAI</span><span data-lang="zh">和 OpenAI 的关系</span></td>
-  <td><span data-lang="en">Invented an Alibaba Cloud link</span><span data-lang="zh">胡编和阿里云的关系</span></td>
-  <td><span data-lang="en">Still invented, slightly different</span><span data-lang="zh">仍胡编，略不同</span></td>
-  <td><span data-lang="en">Not fixed</span><span data-lang="zh">没修好</span></td>
-</tr>
-<tr>
-  <td><span data-lang="en">Jay Chou / "the sky is blue"</span><span data-lang="zh">周杰伦 / 天空蓝</span></td>
-  <td><span data-lang="en">Bad</span><span data-lang="zh">差</span></td>
-  <td><span data-lang="en">About the same</span><span data-lang="zh">差不多</span></td>
-  <td><span data-lang="en">No lift on general knowledge</span><span data-lang="zh">通用知识无提升</span></td>
-</tr>
-</tbody>
-</table>
-
-<div data-lang="en">
-<p>LoRA is the right tool for a narrow identity job. It is the wrong tool for buying facts and reasoning that the base does not have.</p>
-</div>
-<div data-lang="zh">
-<p>LoRA 适合窄的身份任务。它买不来基座里没有的事实和推理。</p>
-</div>
-</div>
-
-<div class="stage">
-<h2><span data-lang="en">What it still can't do</span><span data-lang="zh">哪里没做到</span></h2>
-
-<div data-lang="en">
-<p>My self-trained pretrain-to-SFT chain did not match the author's <code>full_sft</code> on these eight prompts. I am not going to phrase that as "further training would close the gap." I did not run the experiment that would test that, and 200k on a 64M model is already the scale I had.</p>
-<p>Identity LoRA worked on the self-introduction prompt. The OpenAI hallucination did not move. That is coverage, not a PEFT bug: about 91 identity rows never said "I am not related to OpenAI," so the adapter had nothing to install. I did not add the 10 to 20 clarifying rows that would test whether Q3 is fixable. I also did not run a medical-domain LoRA, which would have been the cleaner demonstration of "narrow task, frozen eval, before and after."</p>
-</div>
-<div data-lang="zh">
-<p>自训的 pretrain 到 SFT，没有在这8条prompt上追平作者的 <code>full_sft</code>。我不会把这句话改成“再训就会补上差距”。能检验这句话的实验我没做，64M上20万条已经是我当时的规模。</p>
-<p>Identity LoRA 在自我介绍那条上有效。OpenAI 那条幻觉没有动。这是覆盖问题，不是 PEFT 写错：大约91条身份数据里从来没写过“我和 OpenAI 没有关系”，适配器没有可安装的东西。我没有补那10到20条澄清样本，去测 Q3 能不能修好。医疗垂域 LoRA 也没做，而那才是更干净的演示：“窄任务、冻住评测、训前训后”。</p>
+<p><strong>Pretrain。</strong>10k 规模下 loss 由约7.7降至4.3，链路确认通畅。扩到20万条并启用双卡 DDP 后可正常训练，耗时数小时。全程 <code>logits_loss == loss</code>，在未开 MoE、<code>aux_loss</code> 为0的情况下属正常。</p>
+<p><strong>基于该基座的 SFT。</strong>权重产出正常。在8条 prompt 上与 pretrain 检查点并列对比：</p>
+<ul>
+<li>有改善：Q1 的助手化表述，Q4 偶尔出现正确的代码块格式。</li>
+<li>未改善或更差：Q2、Q3、Q6 的事实与推理仍然错误；Q5 翻译在 SFT <em>之前</em>有时更好；Q7 出现"用户让我写……"这类元话语；复读依然明显。</li>
+<li>加入 <code>repetition_penalty=1.15</code> 后复读减轻，其余均无变化。</li>
+</ul>
+<p><strong>上界对照。</strong>作者权重在 Q3、Q7、Q8 上的格式与内容均更优，但仍会胡编，Q2 把周杰伦与王羲之混为一谈。两条链路的差距在 pretrain 数据与训练规模，不在训练脚本。</p>
+<p><strong>LoRA。</strong>身份类 prompt 上注入生效：从泛化的 AI 助手话术变为具体的小参数模型定位。其余全部未动：与 OpenAI 关系的 prompt 仍是胡编，只是换了一种编法；通用知识没有提升。</p>
 </div>
 
 <div class="callout">
-  <p class="label"><span data-lang="en">The claim I am not making</span><span data-lang="zh">我没有在做的那个主张</span></p>
-  <p><span data-lang="en"><strong>Eight prompts are not an eval set.</strong> They are a tripwire. They can falsify "SFT made it smarter." They cannot support "the model is good at X." Format win-rate, repetition rate, and a human score on facts would be the next instruments. I logged those as the right measurements. I did not build them.</span><span data-lang="zh"><strong>8条prompt不是评测集。</strong>它是绊索。它可以证伪“SFT让它变聪明了”。它支撑不了“模型擅长 X”。格式合规率、复读率、事实题的人工分，才是下一把尺子。我把它们写成了该量的东西。我没有把它们做出来。</span></p>
+  <p class="label"><span data-lang="en">The one-line result</span><span data-lang="zh">一句话结果</span></p>
+  <p><span data-lang="en">A weak base plus 200k SFT samples mainly teaches a model <strong>the shell of a conversation</strong>, not to be more correct. LoRA rewrote its sense of identity and nothing else.</span><span data-lang="zh">弱基座加20万条 SFT，主要学到的是<strong>对话的壳子</strong>，不是变得更正确。LoRA 改写了它的身份认知，别的什么都没改。</span></p>
+</div>
 </div>
 
+<div class="stage">
+<h2><span data-lang="en">Postmortem</span><span data-lang="zh">事后复盘</span></h2>
+
 <div data-lang="en">
-<p>If I ran the calendar again I would fix the eight prompts and the decode settings on day one, as one decision, and hold every stage to a single changed variable. I would not spend the 200k self-pretrain hoping for dialogue quality. A 10k run is enough to understand <code>train_epoch</code>. The author's <code>full_sft</code> is the ceiling worth reading. A narrow LoRA on top of that is the experiment that actually moves. Another full SFT on this base would mostly buy a thicker shell.</p>
-<p>The useful output of the project is not the 131MB file. It is a pipeline I can rerun, a tripwire that caught a story I almost told, and a clean negative: <strong>on a weak base, SFT taught the model how to talk like it knew, not how to know.</strong></p>
+<p>The bottleneck is base capability plus data scale and quality, not any single hyperparameter. That sounds obvious written down. It was not obvious while watching a loss curve fall and reading outputs that were visibly becoming more polite.</p>
+<p>Which is the reason the eight fixed prompts were worth freezing on day one. Loss fell at every stage. Correctness did not follow it, and only a fixed comparison set makes that visible. "It got better" is not a claim until it names which of format compliance, repetition rate, factual score or head-to-head win rate got better.</p>
+<p>Engineering notes worth keeping, all of them cheap to avoid and expensive to debug: <code>run_eval</code> resolves <code>load_from="model"</code> as a Hugging Face repo when run from the wrong directory; pretrain data cannot be fed to SFT, the multi-turn format and label masking differ; two cards are not automatically faster, and on a T4 <code>use_compile=1</code> was sometimes slower; a Kaggle refresh loses draft cells, so checkpoints and eval JSON have to be saved out deliberately.</p>
+<p>Three things this does not establish. There is no human-scored baseline, so every comparison is one set of outputs against another, not against a standard. Only one domain was tried for LoRA, identity, so nothing here says whether a vertical LoRA such as a medical one would behave the same way. And eight prompts is a diagnostic, not a benchmark.</p>
+<p>Rerun today, the order would change: prove the loop with a 10k pretrain, then go straight to the author's checkpoint to understand what a working SFT looks like, and spend the saved time on LoRA and evaluation instead of on pushing a weak base through full SFT.</p>
 </div>
+
 <div data-lang="zh">
-<p>如果重来，我会在第一天就把8条prompt和解码参数一起定死，当成同一个决定，并且要求每个阶段只改一个变量。我不会把那20万条自训 pretrain 当成对话质量的投资。1万条够用来搞懂 <code>train_epoch</code>。值得读的上界是作者的 <code>full_sft</code>。在那上面做窄 LoRA，才是真的会动的实验。在这个基座上再刷一轮全量 SFT，多半只是把壳加厚。</p>
-<p>这个项目有用的产出不是那131MB文件。是一条能重跑的流水线，一根拦住我差点写出去的故事的绊索，和一个干净的否定结论：<strong>弱基座上，SFT 教模型的是“说话像知道”，不是“知道”。</strong></p>
+<p>瓶颈是基座能力加数据的规模与质量，不是任何单点超参。写下来显得理所当然，但在盯着 loss 曲线下降、同时读到输出明显变得更客气的时候，它并不显然。</p>
+<p>这正是那8条 prompt 值得在第一天就冻结的原因。每个阶段 loss 都在降，正确性没有跟着降，而只有固定对照集能让这件事被看见。"效果变好了"在指明是格式合规率、复读率、事实题得分还是固定 prompt 的胜率变好之前，不构成一个结论。</p>
+<p>值得留存的工程记录，都属于避免起来很便宜、debug 起来很贵的那类：在错误目录下运行时，<code>run_eval</code> 会把 <code>load_from="model"</code> 当作 Hugging Face 仓库解析；pretrain 数据不能直接喂给 SFT，多轮格式与 label 掩码规则不同；双卡不一定更快，T4 上 <code>use_compile=1</code> 有时反而更慢；Kaggle 刷新会丢失 draft cell，检查点与评测 JSON 必须主动导出。</p>
+<p>三件本项目没有确立的事：没有人工评分基准，因此所有对比都是一组输出与另一组输出相比，而非与标准相比；LoRA 只试了身份一个方向，因此这里的结论不能推广到医疗这类垂域 LoRA；8条 prompt 是诊断工具，不是 benchmark。</p>
+<p>若今天重跑，顺序会改：先用10k pretrain 验证链路通畅，随即直接使用作者权重理解一个可用的 SFT 是什么样子，把省下的时间放到 LoRA 与评测上，而不是在弱基座上硬推全量 SFT。</p>
 </div>
 </div>
