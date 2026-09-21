@@ -3,6 +3,9 @@
     <span>© {{ site.time | date: '%Y' }} {{ site.name }}
       <span data-lang="zh">索梓涵</span>
     </span>
+    <button class="lucky" type="button" data-lucky>
+      <span data-lang="en">Feeling lucky? Open a random project</span><span data-lang="zh">随机看一个项目</span>
+    </button>
     <span class="contact">
       <a href="mailto:{{ site.email }}">{{ site.email }}</a>
       <a href="https://github.com/{{ site.github_username }}" rel="me noopener">GitHub</a>
@@ -10,3 +13,4 @@
     </span>
   </div>
 </footer>
+<script>window.__projects = [{% for p in site.projects %}"{{ p.url | relative_url }}"{% unless forloop.last %},{% endunless %}{% endfor %}];</script>
