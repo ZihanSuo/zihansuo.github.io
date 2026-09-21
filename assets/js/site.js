@@ -58,6 +58,23 @@
   sizeNav();
   window.addEventListener('resize', sizeNav);
 
+  /* ---- random project ---- */
+  function lucky() {
+    var list = (window.__projects || []).filter(function (u) {
+      return u !== location.pathname;
+    });
+    var last = null;
+    try { last = sessionStorage.getItem('lucky-last'); } catch (e) {}
+    if (list.length > 1 && last) list = list.filter(function (u) { return u !== last; });
+    if (!list.length) return;
+    var pick = list[Math.floor(Math.random() * list.length)];
+    try { sessionStorage.setItem('lucky-last', pick); } catch (e) {}
+    location.href = pick;
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('[data-lucky]'), function (b) {
+    b.addEventListener('click', lucky);
+  });
+
   /* ---- reveal on scroll ---- */
   var items = document.querySelectorAll('.reveal');
   if (!('IntersectionObserver' in window)) {
