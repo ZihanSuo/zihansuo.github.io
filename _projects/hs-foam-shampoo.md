@@ -8,7 +8,7 @@ kicker_en: "Team of 3 · 2025 · P&G case brief"
 kicker_zh: "三人团队 · 2025 · 宝洁命题"
 summary: "P&G's brief sold the product on speed. The evidence said nobody is short of two minutes: washing your hair is a chore that feels bad, and speed only matters as the visible sign that the chore got lighter."
 summary_zh: "宝洁的 brief 主打一个快字。证据显示没有人真的缺那两分钟：洗头是一项体感很差的任务，快只有作为阻力消失的可见证据才有意义。"
-role: "Team of 3 · research and strategy"
+role: "Team of 3 · script, slogan, pain points and production budget"
 period: "2025.03"
 stack: "蝉妈妈, 飞瓜, 评论爬取与情绪分析, JTBD, 分镜脚本, ROAS 测算"
 tags: ["Brand strategy", "Douyin", "Consumer insight"]
@@ -22,10 +22,12 @@ links:
 
 <div data-lang="en">
 <p>Head & Shoulders was launching a foam shampoo, dispensed as foam rather than liquid. The brief asked for Douyin short video that would trade consumers into the new format through talkability, with fixed benefit priorities (oil control and volume first, dandruff second), a budget of 50,000 to 100,000 RMB, and success measured in direct sales and ROI. It framed the product around speed: one press to foam, no lathering, done faster.</p>
+<p>My part: the pain-point scenarios and the compensation behaviour analysis, the slogan, the full storyboard script, the hashtag and cover plan, and the shooting schedule and production budget. Market data, the comment analysis and the distribution plan were done by teammates.</p>
 </div>
 
 <div data-lang="zh">
 <p>海飞丝推出泡沫洗发水，挤出即是泡沫而非液体。命题要求在抖音用短视频制造话题、推动消费者转向新剂型，并给出硬性约束：功效排序控油蓬松第一、去屑第二，预算5至10万元，考核以直接销量与 ROI 为准。brief 对产品的定位是"快"：一按出泡，省去搓泡，洗得更快。</p>
+<p>我负责的部分：场景化痛点与代偿行为分析、slogan、完整分镜脚本、话题标签与封面，以及拍摄排期与制作预算。市场数据、评论分析与投流方案由队友完成。</p>
 </div>
 </div>
 
@@ -33,13 +35,13 @@ links:
 <h2><span data-lang="en">Our approach</span><span data-lang="zh">思路</span></h2>
 
 <div data-lang="en">
-<p><strong>Secondary data to locate the problem, primary evidence to explain it.</strong> Platform data from Chanmama, Feigua and Kantar mapped the market and found a conversion break. On Douyin shampoo, 24 to 30 year olds are the largest viewer group but only second in purchases. For Head & Shoulders, they are 30.11% of viewers and 26.74% of buyers, while 31 to 40 year olds turn 28.42% of viewers into 46.05% of purchases. Young users watch and do not buy; to them it reads as their parents' brand.</p>
+<p><strong>Secondary data to locate the problem, primary evidence to explain it.</strong> The brief already pointed to a conversion break among young users. Platform data from Chanmama, Feigua and Kantar mapped the market and put numbers on it. On Douyin shampoo, 24 to 30 year olds are the largest viewer group but only second in purchases. For Head & Shoulders, they are 30.11% of viewers and 26.74% of buyers, while 31 to 40 year olds turn 28.42% of viewers into 46.05% of purchases. Young users watch and do not buy; to them it reads as their parents' brand.</p>
 <p><strong>Why spend on the group that converts worse.</strong> 31 to 40 year olds already convert on trust in the liquid product; more advertising there reinforces behaviour that already exists, and a new format gives them no reason to switch. Early adopters of a new, higher-priced format are people who pay for novelty. The brief's objective was trade-in, not volume from the existing base. The budget buys a test of whether the format can break the generational barrier.</p>
 <p>The data showed where the break was, not why. Three pieces of primary evidence, each with a different job:</p>
 </div>
 
 <div data-lang="zh">
-<p><strong>二手数据定坐标，一手证据出洞察。</strong>用蝉妈妈、飞瓜、凯度的平台与行业数据摸清市场结构，找到一个转化断层：抖音洗发水品类中24至30岁观众占比第一，成交只排第二。具体到海飞丝，这一年龄段占观众30.11%、成交26.74%，而31至40岁以28.42%的观众撬动了46.05%的成交。年轻人只看不买，品牌在他们心里是"父辈品牌"。</p>
+<p><strong>二手数据定坐标，一手证据出洞察。</strong>brief 已点出年轻人群的转化断层。用蝉妈妈、飞瓜、凯度的平台与行业数据摸清市场结构，把这个断层落到具体数字：抖音洗发水品类中24至30岁观众占比第一，成交只排第二。具体到海飞丝，这一年龄段占观众30.11%、成交26.74%，而31至40岁以28.42%的观众撬动了46.05%的成交。年轻人只看不买，品牌在他们心里是"父辈品牌"。</p>
 <p><strong>为什么把预算投给转化更差的人群。</strong>31至40岁的高转化建立在对液体产品的既有信任上，再投广告是加固已有行为，边际效益低，新剂型也不构成他们换购的理由。新剂型、更高定价的早期采纳者，是愿意为尝新付溢价的人。brief 的目标是 trade-in，不是存量放量。这笔预算买的是一个战略验证：泡沫这个技术符号能否打破代际壁垒。</p>
 <p>数据说明断层在哪，但不说明为什么。为此找了三块一手证据，各有分工：</p>
 </div>
@@ -133,7 +135,7 @@ links:
 
 <p><strong>Two numbers with no source.</strong> An NPS of 8.8 for a product with no users yet, and a 180 percent week-on-week lift in brand search that cites the tactics used rather than any calculation. The completion-rate target was also optimistic: the first eight seconds are deliberately negative, which pulls retention below the industry average, not above it.</p>
 
-<p><strong>The load-bearing insight was never cross-checked.</strong> The 1,200 comments are about foam body wash. I did not run the same analysis on foam shampoo, so "feel, not time" transferring across categories remained an assumption, and the fringe-washing use case specific to shampoo is exactly where the two could differ. It would have cost half a day.</p>
+<p><strong>The load-bearing insight was never cross-checked.</strong> The 1,200 comments are about foam body wash. We did not run the same analysis on foam shampoo, so "feel, not time" transferring across categories remained an assumption, and the fringe-washing use case specific to shampoo is exactly where the two could differ. It would have cost half a day.</p>
 
 <p><strong>An inference standing in for a test.</strong> Which reason people will pay more for was read out of comments, not measured. And the bathroom scene set new lyrics to an existing hit's melody, which a paid spot would need licensed, with no line for it in the budget.</p>
 
@@ -149,7 +151,7 @@ links:
 
 <p><strong>两个没有来源的数字。</strong>一个尚无用户的产品预估出 NPS 8.8分；品牌搜索指数周环比提升180%，依据写的是采取的措施而非任何测算。完播率目标也偏乐观：片子前八秒是刻意铺垫的负面情绪，完播率大概率低于行业均值，而不是高于。</p>
 
-<p><strong>承重的洞察没有做交叉验证。</strong>1200条评论来自泡沫沐浴露。我没有对泡沫洗发水做同样的分析，所以"消费者在意体感而非时间"能否跨品类迁移始终是假设，而洗刘海这个洗发水特有的场景恰恰是两者可能不同的地方。补上这一步只需要半天。</p>
+<p><strong>承重的洞察没有做交叉验证。</strong>1200条评论来自泡沫沐浴露。团队没有对泡沫洗发水做同样的分析，所以"消费者在意体感而非时间"能否跨品类迁移始终是假设，而洗刘海这个洗发水特有的场景恰恰是两者可能不同的地方。补上这一步只需要半天。</p>
 
 <p><strong>用推断代替了测试。</strong>消费者愿意为哪个理由多付钱，是从评论里读出来的，不是测出来的。另外浴室那场戏用现成流行歌的旋律改写了歌词，商业投放需要授权，预算里没有这一项。</p>
 
