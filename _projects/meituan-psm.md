@@ -4,15 +4,16 @@ title_zh: "美团商业分析大赛"
 track: data
 featured: true
 weight: 1
-kicker_en: "Team of 4 · 2026 · Data engineering"
-kicker_zh: "四人团队 · 2026 · 数据工程"
+kicker_en: "Team of 3 · 2026 · Data engineering"
+kicker_zh: "三人团队 · 2026 · 数据工程"
 summary: "611 event names with no naming convention, and no business-line field anywhere in the log. My job was to turn that into a table three downstream modules could use, and to define what every field in it means."
 summary_zh: "611个命名毫无规范的埋点名，日志里没有任何业务线字段。我的工作是把它变成下游三个模块可以直接使用的宽表，并定义其中每个字段的口径。"
-role: "Data engineering & label system · modelling led by teammates"
+role: "Data engineering, business baseline, report writing · modelling led by teammates"
 period: "2026.04"
 stack: "Python, 规则归因, LLM 交叉标注, 分层切分"
 tags: ["Data engineering", "Labelling", "Leakage control"]
 links:
+  - { label: "GitHub · L0 & L1", url: "https://github.com/ZihanSuo/meituan-cross-analysis" }
   - { label: "终稿 Final report", url: "/assets/pdf/meituan-report.pdf" }
 ---
 
@@ -22,13 +23,13 @@ links:
 <div data-lang="en">
 <p>The competition question was whether cross-business-line usage relates to ordering, and whether cross-line guidance is worth building. The data was one day of row-level browse and order logs from 11 January 2026, around 500,000 users, of whom 395,546 made it into the final user-level table.</p>
 <p>Two problems blocked every downstream analysis. The log has no business-line field at all, so the central variable of the question did not exist and had to be inferred. And the 611 unique <code>event_name</code> values follow no naming convention, so user intent could not be grouped without first defining what the groups are.</p>
-<p>I owned the data layer. The modelling was led by teammates, which matters for how the results below should be read.</p>
+<p>I owned two layers and the writing. The data layer (L0) and the business baseline (L1) are mine, and I turned every layer's output into written reports and assembled the final submission. The propensity score matching (L2) and the predictive model (L4) were led by teammates, which matters for how the results below should be read.</p>
 </div>
 
 <div data-lang="zh">
 <p>赛题是跨业务线使用与下单之间是什么关系，以及跨业务引导是否值得做。数据为美团2026年1月11日单日的行级浏览与下单日志，约50万用户，最终进入用户宽表的为395546人。</p>
 <p>有两个问题挡在所有下游分析之前。日志里根本没有业务线字段，也就是说赛题的核心变量并不存在，必须推断出来；而611个唯一 <code>event_name</code> 没有任何命名规范，用户意图在定义清楚分类之前无法归并。</p>
-<p>我负责数据层。建模由队友主导，这一点影响下面结果该如何被读取。</p>
+<p>我负责两层以及写作。数据层（L0）与业务基准（L1）由我完成，各层产出由我写成报告，终稿由我合稿。倾向得分匹配（L2）与预测建模（L4）由队友主导，这一点影响下面结果该如何被读取。</p>
 </div>
 </div>
 
@@ -101,11 +102,15 @@ links:
 
 <div data-lang="en">
 <p>The row-level table and the user-level wide table carried three downstream modules: funnel analysis, propensity score matching, and user segmentation.</p>
+<p>The funnel analysis is also mine. L1 set the baseline every later layer compares against: session-level funnels and first-intent structure by business line, tested with chi-square and corrected for multiple comparisons with Benjamini-Hochberg. Funnel differences between lines are significant, and dwell-time bins move monotonically with all three conversion measures.</p>
+<p>Then the writing. I wrote up each layer's results, including two versions of the matching and modelling reports: a defence version that states the identification framework, the balance criteria and the confidence intervals, and a plain-language version for readers without a causal inference background. I assembled the final report and wrote the appendix.</p>
 <p>The output I would point at first is not a number. A teammate's framework document contains the line <em>"where this conflicts with the team Word draft, the L0 spec and this notebook take precedence"</em>. The field spec had become the team's single source of truth rather than documentation written after the fact. The same document carries a constraint I sent downstream: <em>do not admit variables equivalent to the definition of Cross into the model</em>. The data layer knows which fields are derived from the same source, so that line was mine to draw.</p>
 </div>
 
 <div data-lang="zh">
 <p>行级表与用户级宽表支撑了下游三个模块：漏斗分析、倾向得分匹配、用户分层。</p>
+<p>其中漏斗分析也由我完成。L1 建立了后续各层比较时使用的基准：按业务线统计 session 级漏斗与首条意图结构，做卡方检验并以 BH-FDR 校正多重比较。结果显示各业务线的漏斗差异显著，停留时长分箱与三个转化指标呈单调关系。</p>
+<p>然后是写作。各层结果由我写成报告，其中匹配与建模两层各写了两个版本：答辩版写明识别框架、平衡性判据与置信区间，通俗版面向没有因果推断背景的读者。终稿由我合稿，附录由我撰写。</p>
 <p>最值得指出的产出不是一个数字。队友的框架文档里有这样一句：<em>"与队内 Word 稿冲突时，以 L0 和本 Notebook 实现为准"</em>。口径文档成为了团队的唯一真相来源，而不是事后补写的说明书。同一份文档中还有一条由我发给下游的约束：<em>勿将与 Cross 定义等价的变量纳入模型</em>。数据层比建模层更清楚哪些字段同源，这条红线应当由数据层来划。</p>
 </div>
 
