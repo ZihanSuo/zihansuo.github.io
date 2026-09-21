@@ -9,6 +9,7 @@ kicker_zh: "个人项目 · 2026 · Pretrain / SFT / LoRA"
 summary: "A 64M model taken through pretraining, SFT and LoRA on one Kaggle GPU. The goal was never a good model. It was to find out which problems training actually solves, and the answer is narrower than the literature made it sound."
 summary_zh: "在单卡 Kaggle 上把一个64M模型完整跑过 Pretrain、SFT、LoRA。目标从来不是得到一个好模型，而是搞清楚训练究竟能解决哪一类问题。答案比文献读起来要窄。"
 role: "Solo"
+role_zh: "独立完成"
 period: "2026.06"
 stack: "PyTorch, Kaggle T4, DDP, LoRA"
 tags: ["Pretraining", "SFT", "LoRA", "Evaluation"]

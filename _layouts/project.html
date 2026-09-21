@@ -17,15 +17,15 @@ layout: default
       </p>
 
       <dl class="factbar">
-        {% if page.role %}<div><dt data-lang="en">Role</dt><dt data-lang="zh">角色</dt><dd>{{ page.role }}</dd></div>{% endif %}
+        {% if page.role %}<div><dt data-lang="en">Role</dt><dt data-lang="zh">角色</dt><dd>{% if page.role_zh %}<span data-lang="en">{{ page.role }}</span><span data-lang="zh">{{ page.role_zh }}</span>{% else %}{{ page.role }}{% endif %}</dd></div>{% endif %}
         {% if page.period %}<div><dt data-lang="en">Period</dt><dt data-lang="zh">时间</dt><dd>{{ page.period }}</dd></div>{% endif %}
-        {% if page.stack %}<div><dt data-lang="en">Stack</dt><dt data-lang="zh">技术栈</dt><dd>{{ page.stack }}</dd></div>{% endif %}
-        {% if page.award %}<div><dt data-lang="en">Recognition</dt><dt data-lang="zh">获奖</dt><dd>{{ page.award }}</dd></div>{% endif %}
+        {% if page.stack %}<div><dt data-lang="en">Stack</dt><dt data-lang="zh">技术栈</dt><dd>{% if page.stack_zh %}<span data-lang="en">{{ page.stack }}</span><span data-lang="zh">{{ page.stack_zh }}</span>{% else %}{{ page.stack }}{% endif %}</dd></div>{% endif %}
+        {% if page.award %}<div><dt data-lang="en">Recognition</dt><dt data-lang="zh">获奖</dt><dd>{% if page.award_zh %}<span data-lang="en">{{ page.award }}</span><span data-lang="zh">{{ page.award_zh }}</span>{% else %}{{ page.award }}{% endif %}</dd></div>{% endif %}
       </dl>
 
       {% if page.links %}
       <div class="pill-row">
-        {% for l in page.links %}<a class="pill" href="{{ l.url }}" {% unless l.url contains 'assets' %}target="_blank" rel="noopener"{% endunless %}>{{ l.label }}</a>{% endfor %}
+        {% for l in page.links %}<a class="pill" href="{{ l.url }}" {% unless l.url contains 'assets' %}target="_blank" rel="noopener"{% endunless %}>{% if l.label_zh %}<span data-lang="en">{{ l.label }}</span><span data-lang="zh">{{ l.label_zh }}</span>{% else %}{{ l.label }}{% endif %}</a>{% endfor %}
       </div>
       {% endif %}
     </header>

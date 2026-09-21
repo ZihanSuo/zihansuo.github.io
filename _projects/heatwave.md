@@ -7,15 +7,18 @@ weight: 3
 kicker_en: "Data Journalism · 2022"
 kicker_zh: "数据新闻 · 2022"
 award: "National 1st Prize"
+award_zh: "全国一等奖"
 summary: "Investigated the 2022 Sichuan–Chongqing heatwave using official data, field interviews, and climate studies, exposing patterns of social inequality under extreme weather."
 summary_zh: "用官方数据、实地采访和气候研究调查2022年川渝高温，呈现极端天气之下谁在真正承受代价。"
 role: "Editor & developer"
+role_zh: "编辑、开发"
 period: "2022"
 stack: "Data sourcing, visual narrative, web development"
+stack_zh: "数据采集、视觉叙事、网页开发"
 tags: ["Data journalism", "Climate"]
 cover: /assets/img/who_endures_the_heatwave.png
 links:
-  - { label: "View Website", url: "https://wzmia.github.io/copywriting/" }
+  - { label: "View Website", label_zh: "查看网站", url: "https://wzmia.github.io/copywriting/" }
 ---
 
 <div data-lang="en" markdown="1">

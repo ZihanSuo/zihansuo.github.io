@@ -9,12 +9,13 @@ kicker_zh: "个人项目 · 2025"
 summary: "A pest classifier built on transfer learning, and a time-series study on when adding features quietly hurts generalization."
 summary_zh: "一个用迁移学习做的害虫分类器，和一个关于“加特征什么时候反而在损害泛化”的时间序列研究。"
 role: "Solo"
+role_zh: "独立完成"
 period: "2025"
 stack: "TensorFlow, ResNet50, EfficientNet"
 tags: ["Transfer learning", "Time series"]
 links:
-  - { label: "Pest Classifier", url: "https://github.com/ZihanSuo/Machine_Learning_Projects/tree/main/Transfer%20Learning%20for%20Image%20Classification" }
-  - { label: "Time-Series Study", url: "https://github.com/ZihanSuo/Machine_Learning_Projects/tree/main/Time-Series%20Classification%20Case%20Study" }
+  - { label: "Pest Classifier", label_zh: "害虫图像分类", url: "https://github.com/ZihanSuo/Machine_Learning_Projects/tree/main/Transfer%20Learning%20for%20Image%20Classification" }
+  - { label: "Time-Series Study", label_zh: "时间序列分析", url: "https://github.com/ZihanSuo/Machine_Learning_Projects/tree/main/Time-Series%20Classification%20Case%20Study" }
 ---
 
 <div data-lang="en" markdown="1">

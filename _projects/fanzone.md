@@ -9,6 +9,7 @@ kicker_zh: "三人团队 · 2024 · 产品设计"
 summary: "The earliest thing here, and the only one that is not a system. Fans were already organizing offline events. They were doing it in the comment sections of platforms built for something else."
 summary_zh: "全站最早的项目，也是唯一一个不是系统的。粉丝原本就在组织线下应援，只是组织过程发生在为其他用途设计的平台的评论区里。"
 role: "Product design lead · research, IA, prototypes"
+role_zh: "产品设计负责人 · 调研、信息架构、原型"
 period: "2024.06"
 stack: "问卷与深访, 竞品分析, Sketch, XMind"
 tags: ["Product design", "User research", "WeChat mini-program"]

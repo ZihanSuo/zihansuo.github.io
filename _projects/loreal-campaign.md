@@ -7,9 +7,11 @@ weight: 1
 kicker_en: "Team lead · 2025 · Integrated campaign"
 kicker_zh: "团队负责人 · 2025 · 整合传播"
 award: "National 1st Prize"
+award_zh: "全国一等奖"
 summary: "A beauty brand wants to reach Chinese university students. The obvious campaign is about looking better. This one is about the emotions students are not allowed to show, which is a harder sell internally and the reason it won."
 summary_zh: "一个美妆品牌要触达中国大学生。顺理成章的做法是讲怎样更好看。这份提案讲的是学生不被允许表现出来的情绪，对内更难卖，也正因如此拿了一等奖。"
 role: "Project lead · early-stage research, creative direction"
+role_zh: "项目负责人 · 前期调研、创意方向"
 period: "2025.07"
 stack: "PEST, 受众研究, 竞品与媒介对标, 内容策划"
 tags: ["Integrated campaign", "Gen Z", "Brand positioning"]
