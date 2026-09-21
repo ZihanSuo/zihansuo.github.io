@@ -56,7 +56,7 @@ Here lies the messy, exciting, and occasionally awkward journey of a storyteller
 <div class="tl-item tl-item--create reveal">
   <p class="tl-date"><span data-lang="en">Apr</span><span data-lang="zh">4月</span></p>
   <h3><span data-lang="en">📦 Meituan Business Analytics Competition</span><span data-lang="zh">📦 美团商业分析大赛</span></h3>
-  <div data-lang="en"><p>Owned the data engineering: pipelines, cleaning and feature tables behind a PSM causal-inference study of user behaviour. Not the modelling. The plumbing that made the modelling possible.</p></div><div data-lang="zh"><p>负责数据工程：数据管道、清洗、特征表，支撑一个用 PSM 做因果推断的用户行为研究。不是建模，是让建模跑得起来的那部分脏活。</p></div>
+  <div data-lang="en"><p>Owned the data engineering: pipelines, cleaning and feature tables behind a propensity-score-matched study of user behaviour. Not the modelling. The plumbing that made the modelling possible.</p></div><div data-lang="zh"><p>负责数据工程：数据管道、清洗、特征表，支撑一个用倾向得分匹配做协变量调整的用户行为研究。不是建模，是让建模跑得起来的那部分脏活。</p></div>
 </div>
 <div class="tl-item tl-item--study reveal">
   <p class="tl-date"><span data-lang="en">Feb</span><span data-lang="zh">2月</span></p>
