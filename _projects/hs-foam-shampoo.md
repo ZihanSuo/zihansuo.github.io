@@ -22,12 +22,12 @@ links:
 
 <div data-lang="en">
 <p>Head & Shoulders was launching a foam shampoo, dispensed as foam rather than liquid. The brief asked for Douyin short video that would trade consumers into the new format through talkability, with fixed benefit priorities (oil control and volume first, dandruff second), a budget of 50,000 to 100,000 RMB, and success measured in direct sales and ROI. It framed the product around speed: one press to foam, no lathering, done faster.</p>
-<p>My part: the pain-point scenarios and the compensation behaviour analysis, the slogan, the full storyboard script, the hashtag and cover plan, and the shooting schedule and production budget. Market data, the comment analysis and the distribution plan were done by teammates.</p>
+<p>My part: the pain-point scenarios and the compensation behaviour analysis, the slogan, the full storyboard script, the hashtag and cover plan, and the shooting schedule and production budget. The one-page ad strategy was written jointly. Market data, the comment analysis and the distribution plan were done by teammates.</p>
 </div>
 
 <div data-lang="zh">
 <p>海飞丝推出泡沫洗发水，挤出即是泡沫而非液体。命题要求在抖音用短视频制造话题、推动消费者转向新剂型，并给出硬性约束：功效排序控油蓬松第一、去屑第二，预算5至10万元，考核以直接销量与 ROI 为准。brief 对产品的定位是"快"：一按出泡，省去搓泡，洗得更快。</p>
-<p>我负责的部分：场景化痛点与代偿行为分析、slogan、完整分镜脚本、话题标签与封面，以及拍摄排期与制作预算。市场数据、评论分析与投流方案由队友完成。</p>
+<p>我负责的部分：场景化痛点与代偿行为分析、slogan、完整分镜脚本、话题标签与封面，以及拍摄排期与制作预算。一页纸广告策略为共同完成。市场数据、评论分析与投流方案由队友完成。</p>
 </div>
 </div>
 
