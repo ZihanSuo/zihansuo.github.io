@@ -66,3 +66,5 @@ exclude:
   - .devcontainer
   - .vscode
   - "*.gem"
+  - "*.pptx"
+  - "*.key"
