@@ -12,19 +12,21 @@ role: "Data engineering & label system · modelling led by teammates"
 period: "2026.04"
 stack: "Python, 规则归因, LLM 交叉标注, 分层切分"
 tags: ["Data engineering", "Labelling", "Leakage control"]
+links:
+  - { label: "终稿 Final report", url: "/assets/pdf/meituan-report.pdf" }
 ---
 
 <div class="stage">
 <h2><span data-lang="en">Why I built it</span><span data-lang="zh">起因</span></h2>
 
 <div data-lang="en">
-<p>The competition question was whether cross-business-line usage relates to ordering, and whether cross-line guidance is worth building. The data was row-level browse and order logs covering 395,546 users.</p>
+<p>The competition question was whether cross-business-line usage relates to ordering, and whether cross-line guidance is worth building. The data was one day of row-level browse and order logs from 11 January 2026, around 500,000 users, of whom 395,546 made it into the final user-level table.</p>
 <p>Two problems blocked every downstream analysis. The log has no business-line field at all, so the central variable of the question did not exist and had to be inferred. And the 611 unique <code>event_name</code> values follow no naming convention, so user intent could not be grouped without first defining what the groups are.</p>
 <p>I owned the data layer. The modelling was led by teammates, which matters for how the results below should be read.</p>
 </div>
 
 <div data-lang="zh">
-<p>赛题是跨业务线使用与下单之间是什么关系，以及跨业务引导是否值得做。数据是行级浏览与下单日志，覆盖395546个用户。</p>
+<p>赛题是跨业务线使用与下单之间是什么关系，以及跨业务引导是否值得做。数据为美团2026年1月11日单日的行级浏览与下单日志，约50万用户，最终进入用户宽表的为395546人。</p>
 <p>有两个问题挡在所有下游分析之前。日志里根本没有业务线字段，也就是说赛题的核心变量并不存在，必须推断出来；而611个唯一 <code>event_name</code> 没有任何命名规范，用户意图在定义清楚分类之前无法归并。</p>
 <p>我负责数据层。建模由队友主导，这一点影响下面结果该如何被读取。</p>
 </div>
@@ -40,7 +42,7 @@ tags: ["Data engineering", "Labelling", "Leakage control"]
 <li><strong>The submit-order page is back-filled from event sequence.</strong> That page carries no business semantics at all, food delivery and hotel booking both pass through it, so rule-based attribution drops all of it into "other". Those rows are the closest thing in the data to conversion, and discarding them would systematically distort every downstream funnel. Sorting events within each user and inheriting the previous row's line recovers them.</li>
 </ul>
 
-<p><strong>An intent taxonomy validated by disagreement rather than by accuracy.</strong> 611 event names map to 9 intent classes. There is no ground truth, and labelling all 611 by hand is too expensive, so a single model's labels cannot be checked. Three models labelled independently under the same written rules.</p>
+<p><strong>An intent taxonomy validated by disagreement rather than by accuracy.</strong> 611 event names map to 8 intent classes plus an "other" bucket excluded from analysis. There is no ground truth, and labelling all 611 by hand is too expensive, so a single model's labels cannot be checked. Three models labelled independently under the same written rules.</p>
 </div>
 
 <div data-lang="zh">
@@ -50,7 +52,7 @@ tags: ["Data engineering", "Labelling", "Leakage control"]
 <li><strong>提交订单页按事件时序回写。</strong>该页面不带任何业务语义，买外卖与订酒店都经过它，按规则判会全部落入"其他"。而这些行恰恰是数据中最接近转化的行为，丢弃它们会让下游漏斗系统性失真。按 user_id 内事件时间排序、继承上一条行为的业务线，可以把它们找回来。</li>
 </ul>
 
-<p><strong>意图分类用分歧而非准确率来验证。</strong>611个埋点名归到9类意图。不存在 ground truth，人工全标成本过高，因此单个模型的标注无法自证对错。改由三个模型依据同一套成文规则独立标注。</p>
+<p><strong>意图分类用分歧而非准确率来验证。</strong>611个埋点名归到8类有效意图，另设"其他"一类，不参与后续分析。不存在 ground truth，人工全标成本过高，因此单个模型的标注无法自证对错。改由三个模型依据同一套成文规则独立标注。</p>
 </div>
 
 <div class="callout">
@@ -86,7 +88,8 @@ tags: ["Data engineering", "Labelling", "Leakage control"]
 </tr></thead>
 <tbody>
 <tr><td><span data-lang="en">Users covered</span><span data-lang="zh">覆盖用户数</span></td><td>395,546</td></tr>
-<tr><td><span data-lang="en">Unique event names mapped</span><span data-lang="zh">归类的唯一埋点名</span></td><td>611 → 9</td></tr>
+<tr><td><span data-lang="en">Unique event names mapped</span><span data-lang="zh">归类的唯一埋点名</span></td><td>611 → 8 <span class="num">+ other</span></td></tr>
+<tr><td><span data-lang="en">Business-line attribution coverage</span><span data-lang="zh">业务线归因覆盖率</span></td><td>99.76% <span class="num">7 lines</span></td></tr>
 <tr><td><span data-lang="en">Page-event mapping pairs</span><span data-lang="zh">页面事件映射对</span></td><td>809</td></tr>
 <tr><td><span data-lang="en">Three-model full agreement</span><span data-lang="zh">三模型完全一致</span></td><td>64.7% <span class="num">439 / 678</span></td></tr>
 <tr><td><span data-lang="en">Sent to manual adjudication</span><span data-lang="zh">进入人工裁决</span></td><td>35.3% <span class="num">239</span></td></tr>
@@ -105,6 +108,15 @@ tags: ["Data engineering", "Labelling", "Leakage control"]
 <p>行级表与用户级宽表支撑了下游三个模块：漏斗分析、倾向得分匹配、用户分层。</p>
 <p>最值得指出的产出不是一个数字。队友的框架文档里有这样一句：<em>"与队内 Word 稿冲突时，以 L0 和本 Notebook 实现为准"</em>。口径文档成为了团队的唯一真相来源，而不是事后补写的说明书。同一份文档中还有一条由我发给下游的约束：<em>勿将与 Cross 定义等价的变量纳入模型</em>。数据层比建模层更清楚哪些字段同源，这条红线应当由数据层来划。</p>
 </div>
+
+<h3><span data-lang="en">The submission</span><span data-lang="zh">提交物</span></h3>
+<div class="doc-list">
+  <a class="doc" href="/assets/pdf/meituan-report.pdf" target="_blank" rel="noopener">
+    <span class="doc__icon">PDF</span>
+    <span class="doc__name"><span data-lang="en">Final report · team submission</span><span data-lang="zh">终稿 · 团队提交版</span></span>
+    <span class="doc__meta">39 <span data-lang="en">pages</span><span data-lang="zh">页</span> · 2.7 MB</span>
+  </a>
+</div>
 </div>
 
 <div class="stage">
@@ -116,7 +128,7 @@ tags: ["Data engineering", "Labelling", "Leakage control"]
 </div>
 
 <div data-lang="en">
-<p>Identifying a causal effect would need the treatment defined on an earlier window and the outcome measured on a later one. That is a decision taken when the tables are designed, and it cannot be retrofitted.</p>
+<p>The submitted report is not consistent on this point. Its abstract says PSM "proves" cross-line behaviour carries incremental value; its body calls the same number "a quasi-causal estimate controlling for observed confounders". The second is the defensible reading, and the one used here. Identifying a causal effect would need the treatment defined on an earlier window and the outcome measured on a later one. That is a decision taken when the tables are designed, and it cannot be retrofitted.</p>
 <p><strong>A definitional leakage risk I flagged and cannot confirm was resolved.</strong> The segmentation model reports AUC 0.80, and its top SHAP features include the count of distinct second-level categories. <code>is_cross</code> is defined as two or more distinct business lines, and business line is derived from category. Those two overlap structurally. The modelling was not mine, so the honest statement is that the risk exists and the ablation that would settle it, dropping that feature and seeing how far AUC falls, was not run. For the same reason the segmentation result is quoted here as observed rates rather than as model performance: the high-potential tier orders at 44.3% against 10.0% for the no-potential tier.</p>
 <p><strong>The taxonomy is coarse where it matters most.</strong> Exploratory browsing absorbs 377 of the mapped names, close to half. It should split into targeted list browsing, meaning search results and rankings, and untargeted feed browsing, which are different user states calling for different interventions. At the other end, search behaviour and "other" hold nine names each, too few for group analysis. The taxonomy was designed to cover every event name, not to balance analysis, and that tradeoff was not revisited.</p>
 <p><strong>Agreement is not accuracy.</strong> 64.7% is a consistency figure. Without even a hundred hand-labelled items as a standard set, the labelling system has no credibility number attached to it, only an internal one. Building that standard set is the first thing I would add.</p>
@@ -124,7 +136,7 @@ tags: ["Data engineering", "Labelling", "Leakage control"]
 </div>
 
 <div data-lang="zh">
-<p>要识别因果，需要处理变量定义在前期窗口、结果变量测在后期窗口。这是设计数据表时就该定下的事，事后无法补救。</p>
+<p>提交的终稿在这一点上前后不一：摘要写 PSM"证明"了跨业务行为具有增量价值，正文则称同一数字为"控制可观测混杂后的类因果估计"。后者是站得住的读法，本页采用后者。要识别因果，需要处理变量定义在前期窗口、结果变量测在后期窗口。这是设计数据表时就该定下的事，事后无法补救。</p>
 <p><strong>一处我已提示、但无法确认是否被处理的定义性泄漏风险。</strong>分层模型报告 AUC 0.80，其 SHAP 重要性前列包含二级类目去重数；而 <code>is_cross</code> 的定义是去重业务线数大于等于2，业务线又由类目映射而来。二者存在结构性重叠。建模不由我负责，因此诚实的表述是：风险存在，而能够定论的消融实验，即去掉该特征观察 AUC 下降多少，并未执行。出于同样的原因，此处引用分层结果时只报观测比率而不报模型表现：高潜层实际下单率44.3%，无潜层10.0%。</p>
 <p><strong>分类体系在最要紧的地方过粗。</strong>探索浏览吸收了377条映射名，接近一半。它应当拆分为有目标的列表浏览（搜索结果、榜单）与无目标的 feeds 流浏览，二者是不同的用户状态，对应的运营手段也不同。另一端，搜索行为与"其他"各只有9条，样本量不足以做分组分析。这套分类是为覆盖全部埋点设计的，不是为均衡分析设计的，而这个取舍后来没有被重新审视。</p>
 <p><strong>一致率不是准确率。</strong>64.7%是一个内部一致性数字。在没有哪怕100条人工标注作为标准集的情况下，整套标注体系没有可信度数字，只有内部数字。补上这个标准集是首先要加的一件事。</p>
