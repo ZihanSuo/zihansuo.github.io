@@ -3,7 +3,7 @@ title: "Who Endures the Heatwave?"
 title_zh: "谁在承受热浪？"
 track: story
 featured: false
-weight: 2
+weight: 3
 kicker_en: "Data Journalism · 2022"
 kicker_zh: "数据新闻 · 2022"
 award: "National 1st Prize"

@@ -3,7 +3,7 @@ title: "Feature Articles: Stories from Campus, Societies and People"
 title_zh: "特稿：校园、社会与人"
 track: story
 featured: false
-weight: 4
+weight: 5
 kicker_en: "Long-form Reporting · 2020–2023"
 kicker_zh: "特稿写作 · 2020–2023"
 summary: "Four published features on campus life and social observation, originally on WeChat Official Account (22k to 68k reads each)."
