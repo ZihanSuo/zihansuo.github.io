@@ -8,7 +8,7 @@ kicker_en: "Team of 3 · 2026 · Data engineering"
 kicker_zh: "三人团队 · 2026 · 数据工程"
 summary: "611 event names with no naming convention, and no business-line field anywhere in the log. My job was to turn that into a table three downstream modules could use, and to define what every field in it means."
 summary_zh: "611个命名毫无规范的埋点名，日志里没有任何业务线字段。我的工作是把它变成下游三个模块可以直接使用的宽表，并定义其中每个字段的口径。"
-role: "Data engineering, business baseline, report writing · modelling led by teammates"
+role: "Data engineering, business baseline, report writing · modelling co-designed, implemented by teammates"
 period: "2026.04"
 stack: "Python, 规则归因, LLM 交叉标注, 分层切分"
 tags: ["Data engineering", "Labelling", "Leakage control"]
@@ -23,13 +23,13 @@ links:
 <div data-lang="en">
 <p>The competition question was whether cross-business-line usage relates to ordering, and whether cross-line guidance is worth building. The data was one day of row-level browse and order logs from 11 January 2026, around 500,000 users, of whom 395,546 made it into the final user-level table.</p>
 <p>Two problems blocked every downstream analysis. The log has no business-line field at all, so the central variable of the question did not exist and had to be inferred. And the 611 unique <code>event_name</code> values follow no naming convention, so user intent could not be grouped without first defining what the groups are.</p>
-<p>I owned two layers and the writing. The data layer (L0) and the business baseline (L1) are mine, and I turned every layer's output into written reports and assembled the final submission. The propensity score matching (L2) and the predictive model (L4) were led by teammates, which matters for how the results below should be read.</p>
+<p>I owned two layers and the writing. The data layer (L0) and the business baseline (L1) are mine, and I turned every layer's output into written reports and assembled the final submission. The approach for the propensity score matching (L2) and the predictive model (L4) was worked out together as a team, and teammates wrote the code. That matters for how the results below should be read.</p>
 </div>
 
 <div data-lang="zh">
 <p>赛题是跨业务线使用与下单之间是什么关系，以及跨业务引导是否值得做。数据为美团2026年1月11日单日的行级浏览与下单日志，约50万用户，最终进入用户宽表的为395546人。</p>
 <p>有两个问题挡在所有下游分析之前。日志里根本没有业务线字段，也就是说赛题的核心变量并不存在，必须推断出来；而611个唯一 <code>event_name</code> 没有任何命名规范，用户意图在定义清楚分类之前无法归并。</p>
-<p>我负责两层以及写作。数据层（L0）与业务基准（L1）由我完成，各层产出由我写成报告，终稿由我合稿。倾向得分匹配（L2）与预测建模（L4）由队友主导，这一点影响下面结果该如何被读取。</p>
+<p>我负责两层以及写作。数据层（L0）与业务基准（L1）由我完成，各层产出由我写成报告，终稿由我合稿。倾向得分匹配（L2）与预测建模（L4）的思路由团队共同讨论确定，代码由队友实现，这一点影响下面结果该如何被读取。</p>
 </div>
 </div>
 
@@ -134,7 +134,7 @@ links:
 
 <div data-lang="en">
 <p>The submitted report is not consistent on this point. Its abstract says PSM "proves" cross-line behaviour carries incremental value; its body calls the same number "a quasi-causal estimate controlling for observed confounders". The second is the defensible reading, and the one used here. Identifying a causal effect would need the treatment defined on an earlier window and the outcome measured on a later one. That is a decision taken when the tables are designed, and it cannot be retrofitted.</p>
-<p><strong>A definitional leakage risk I flagged and cannot confirm was resolved.</strong> The segmentation model reports AUC 0.80, and its top SHAP features include the count of distinct second-level categories. <code>is_cross</code> is defined as two or more distinct business lines, and business line is derived from category. Those two overlap structurally. The modelling was not mine, so the honest statement is that the risk exists and the ablation that would settle it, dropping that feature and seeing how far AUC falls, was not run. For the same reason the segmentation result is quoted here as observed rates rather than as model performance: the high-potential tier orders at 44.3% against 10.0% for the no-potential tier.</p>
+<p><strong>A definitional leakage risk I flagged and cannot confirm was resolved.</strong> The segmentation model reports AUC 0.80, and its top SHAP features include the count of distinct second-level categories. <code>is_cross</code> is defined as two or more distinct business lines, and business line is derived from category. Those two overlap structurally. The modelling code was not mine, so the honest statement is that the risk exists and the ablation that would settle it, dropping that feature and seeing how far AUC falls, was not run. For the same reason the segmentation result is quoted here as observed rates rather than as model performance: the high-potential tier orders at 44.3% against 10.0% for the no-potential tier.</p>
 <p><strong>The taxonomy is coarse where it matters most.</strong> Exploratory browsing absorbs 377 of the mapped names, close to half. It should split into targeted list browsing, meaning search results and rankings, and untargeted feed browsing, which are different user states calling for different interventions. At the other end, search behaviour and "other" hold nine names each, too few for group analysis. The taxonomy was designed to cover every event name, not to balance analysis, and that tradeoff was not revisited.</p>
 <p><strong>Agreement is not accuracy.</strong> 64.7% is a consistency figure. Without even a hundred hand-labelled items as a standard set, the labelling system has no credibility number attached to it, only an internal one. Building that standard set is the first thing I would add.</p>
 <p>Most of the disagreement is not a model failure either. The largest cluster, 59 cases, sits on the boundary between exploratory and deep browsing, defined as multi-store versus single-store. Names like <code>单个图片/视频_mc</code> do not say whether they fired on a list page or a detail page. <strong>The information needed to decide is absent from the event name itself</strong>, which is a finding about the instrumentation rather than about the labellers.</p>
@@ -142,7 +142,7 @@ links:
 
 <div data-lang="zh">
 <p>提交的终稿在这一点上前后不一：摘要写 PSM"证明"了跨业务行为具有增量价值，正文则称同一数字为"控制可观测混杂后的类因果估计"。后者是站得住的读法，本页采用后者。要识别因果，需要处理变量定义在前期窗口、结果变量测在后期窗口。这是设计数据表时就该定下的事，事后无法补救。</p>
-<p><strong>一处我已提示、但无法确认是否被处理的定义性泄漏风险。</strong>分层模型报告 AUC 0.80，其 SHAP 重要性前列包含二级类目去重数；而 <code>is_cross</code> 的定义是去重业务线数大于等于2，业务线又由类目映射而来。二者存在结构性重叠。建模不由我负责，因此诚实的表述是：风险存在，而能够定论的消融实验，即去掉该特征观察 AUC 下降多少，并未执行。出于同样的原因，此处引用分层结果时只报观测比率而不报模型表现：高潜层实际下单率44.3%，无潜层10.0%。</p>
+<p><strong>一处我已提示、但无法确认是否被处理的定义性泄漏风险。</strong>分层模型报告 AUC 0.80，其 SHAP 重要性前列包含二级类目去重数；而 <code>is_cross</code> 的定义是去重业务线数大于等于2，业务线又由类目映射而来。二者存在结构性重叠。建模代码不由我实现，因此诚实的表述是：风险存在，而能够定论的消融实验，即去掉该特征观察 AUC 下降多少，并未执行。出于同样的原因，此处引用分层结果时只报观测比率而不报模型表现：高潜层实际下单率44.3%，无潜层10.0%。</p>
 <p><strong>分类体系在最要紧的地方过粗。</strong>探索浏览吸收了377条映射名，接近一半。它应当拆分为有目标的列表浏览（搜索结果、榜单）与无目标的 feeds 流浏览，二者是不同的用户状态，对应的运营手段也不同。另一端，搜索行为与"其他"各只有9条，样本量不足以做分组分析。这套分类是为覆盖全部埋点设计的，不是为均衡分析设计的，而这个取舍后来没有被重新审视。</p>
 <p><strong>一致率不是准确率。</strong>64.7%是一个内部一致性数字。在没有哪怕100条人工标注作为标准集的情况下，整套标注体系没有可信度数字，只有内部数字。补上这个标准集是首先要加的一件事。</p>
 <p>而多数分歧也并非模型能力问题。最大的一簇59例落在探索浏览与深度浏览的边界上，二者定义为店外多店浏览与单店内浏览，但 <code>单个图片/视频_mc</code> 这类名称根本看不出它触发在列表页还是详情页。<strong>做出判断所需的信息，在埋点名本身里就不存在</strong>，这是关于埋点设计的发现，不是关于标注者的发现。</p>

@@ -56,7 +56,7 @@ Here lies the messy, exciting, and occasionally awkward journey of a storyteller
 <div class="tl-item tl-item--create reveal">
   <p class="tl-date"><span data-lang="en">Apr</span><span data-lang="zh">4月</span></p>
   <h3><span data-lang="en">📦 Meituan Business Analytics Competition</span><span data-lang="zh">📦 美团商业分析大赛</span></h3>
-  <div data-lang="en"><p>Owned the data engineering and the business baseline, then wrote up every layer and assembled the final report. Not the modelling. The plumbing that made the modelling possible, and the prose that made it readable.</p></div><div data-lang="zh"><p>负责数据工程与业务基准，并把各层结果写成报告、合成终稿。不是建模，是让建模跑得起来、也读得懂的那部分。</p></div>
+  <div data-lang="en"><p>Owned the data engineering and the business baseline, then wrote up every layer and assembled the final report. The modelling approach we worked out together; teammates wrote that code. My part was the plumbing that made the modelling possible, and the prose that made it readable.</p></div><div data-lang="zh"><p>负责数据工程与业务基准，并把各层结果写成报告、合成终稿。建模思路一起商定，代码由队友实现；我做的是让建模跑得起来、也读得懂的那部分。</p></div>
 </div>
 <div class="tl-item tl-item--study reveal">
   <p class="tl-date"><span data-lang="en">Feb</span><span data-lang="zh">2月</span></p>
