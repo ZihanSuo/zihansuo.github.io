@@ -9,8 +9,10 @@ kicker_zh: "课程研究项目 · 2024"
 summary: "Analyzed brand positioning, influencer strategy, and platform differentiation in the Chinese fitness market."
 summary_zh: "对比 lululemon 和迪卡侬在中国健身市场的品牌定位、达人策略与平台差异化打法。"
 role: "Solo"
+role_zh: "独立完成"
 period: "2024"
 stack: "WeChat, Xiaohongshu, Mini Programs"
+stack_zh: "微信、小红书、小程序"
 tags: ["Brand strategy", "Platform analysis"]
 ---
 

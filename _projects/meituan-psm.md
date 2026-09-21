@@ -9,6 +9,7 @@ kicker_zh: "三人团队 · 2026 · 数据工程"
 summary: "611 event names with no naming convention, and no business-line field anywhere in the log. My job was to turn that into a table three downstream modules could use, and to define what every field in it means."
 summary_zh: "611个命名毫无规范的埋点名，日志里没有任何业务线字段。我的工作是把它变成下游三个模块可以直接使用的宽表，并定义其中每个字段的口径。"
 role: "Data engineering, business baseline, report writing · modelling co-designed, implemented by teammates"
+role_zh: "数据工程、业务基准、报告写作 · 建模思路共同讨论，队友实现"
 period: "2026.04"
 stack: "Python, 规则归因, LLM 交叉标注, 分层切分"
 tags: ["Data engineering", "Labelling", "Leakage control"]

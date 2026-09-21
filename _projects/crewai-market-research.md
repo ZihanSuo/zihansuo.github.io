@@ -9,6 +9,7 @@ kicker_zh: "个人项目 · 2026 · CrewAI"
 summary: "A multi-agent system that researches overseas markets for Chinese brands. The part that took the time was not getting it to write reports. It was building the machinery that proves when a report cannot be trusted."
 summary_zh: "一个面向中国品牌出海市场研究的多 Agent 系统。主要工作量不在让它写出报告，而在构建一套能判定报告何时不可信的机制。"
 role: "Solo · design, build, evaluation"
+role_zh: "独立完成 · 设计、开发、评测"
 period: "2026.06–08"
 stack: "CrewAI, Python, YAML, pytest"
 tags: ["Multi-agent", "Evaluation", "Go-to-market"]

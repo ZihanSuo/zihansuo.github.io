@@ -9,13 +9,14 @@ kicker_zh: "个人项目 · 2025 · n8n"
 summary: "A daily ranking agent for financial news, built end to end on my own. It ran for three weeks and I monitored it daily. Nine months later the archive showed the scoring function had silently degraded partway through, and that nothing I monitored could have caught it."
 summary_zh: "一个每日排序财经新闻的 agent，从架构到部署由我独立完成。运行三周，我每天核查。九个月后归档数据显示，评分函数在中途已静默退化，而我核查的任何一项都不可能发现它。"
 role: "Solo · design, build, deployment"
+role_zh: "独立完成 · 设计、开发、部署"
 period: "2025.10–12"
 stack: "n8n, Python, OpenAI, Tavily, Streamlit, GitHub"
 tags: ["Agent workflow", "Scoring design", "n8n"]
 cover: /assets/img/investelligence_1.png
 links:
   - { label: "GitHub", url: "https://github.com/ZihanSuo/INVESTelligence" }
-  - { label: "Live Demo", url: "https://investelligence.streamlit.app/" }
+  - { label: "Live Demo", label_zh: "在线演示", url: "https://investelligence.streamlit.app/" }
 ---
 
 <div class="stage">

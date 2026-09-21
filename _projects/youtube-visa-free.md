@@ -9,11 +9,13 @@ kicker_zh: "研究项目 · 2024 · Python"
 summary: "Topic modeling, narrative coding, and sentiment analysis on 170k+ subtitles and 2.7k+ comments from YouTube travel vlogs under China's visa-free policy."
 summary_zh: "对免签政策后外国游客发布的 YouTube 旅行 vlog 做主题建模、叙事编码和情感分析，样本是17万多条字幕和2700多条评论。"
 role: "Solo"
+role_zh: "独立完成"
 period: "2024"
 stack: "Python, topic modeling, sentiment analysis"
+stack_zh: "Python、主题建模、情感分析"
 tags: ["NLP", "Public opinion"]
 links:
-  - { label: "Paper & Code", url: "https://github.com/ZihanSuo/Data-Projects/tree/main/Python-Online%20public%20opinion%20research" }
+  - { label: "Paper & Code", label_zh: "论文与代码", url: "https://github.com/ZihanSuo/Data-Projects/tree/main/Python-Online%20public%20opinion%20research" }
 ---
 
 <div data-lang="en" markdown="1">

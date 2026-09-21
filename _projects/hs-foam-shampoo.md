@@ -9,12 +9,13 @@ kicker_zh: "三人团队 · 2025 · 宝洁命题"
 summary: "P&G's brief sold the product on speed. The evidence said nobody is short of two minutes: washing your hair is a chore that feels bad, and speed only matters as the visible sign that the chore got lighter."
 summary_zh: "宝洁的 brief 主打一个快字。证据显示没有人真的缺那两分钟：洗头是一项体感很差的任务，快只有作为阻力消失的可见证据才有意义。"
 role: "Team of 3 · script, slogan, pain points and production budget"
+role_zh: "三人团队 · 脚本、slogan、痛点与制作预算"
 period: "2025.03"
 stack: "蝉妈妈, 飞瓜, 评论爬取与情绪分析, JTBD, 分镜脚本, ROAS 测算"
 tags: ["Brand strategy", "Douyin", "Consumer insight"]
 links:
   - { label: "方案 Deck", url: "/assets/pdf/hs-deck.pdf" }
-  - { label: "Brief", url: "/assets/pdf/hs-brief.pdf" }
+  - { label: "Brief", label_zh: "宝洁 brief", url: "/assets/pdf/hs-brief.pdf" }
 ---
 
 <div class="stage">

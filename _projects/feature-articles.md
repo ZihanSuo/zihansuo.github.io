@@ -9,6 +9,7 @@ kicker_zh: "特稿写作 · 2020–2023"
 summary: "Four published features on campus life and social observation, originally on WeChat Official Account (22k to 68k reads each)."
 summary_zh: "四篇发在微信公众号上的特稿，写校园生活和社会观察，单篇阅读量2.2万到6.8万。"
 role: "Reporter & writer"
+role_zh: "记者、撰稿"
 period: "2020–2023"
 tags: ["Feature writing", "WeChat"]
 cover: /assets/img/feature_grass.png
