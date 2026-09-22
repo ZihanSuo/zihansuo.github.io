@@ -1,6 +1,6 @@
 ---
 title: "Her Time, Written on This Map"
-title_zh: "她的时间，写在这张地图上"
+title_zh: "她的时光，写在这张地图上"
 track: story
 featured: false
 weight: 4

@@ -149,7 +149,7 @@ Here lies the messy, exciting, and occasionally awkward journey of a storyteller
 <div class="tl-item tl-item--create reveal">
   <p class="tl-date"><span data-lang="en">Nov</span><span data-lang="zh">11月</span></p>
   <h3><span data-lang="en">🏅 National 1st Prize · New Media Creativity Competition</span><span data-lang="zh">🏅 全国一等奖 · 新媒体创意大赛</span></h3>
-  <div data-lang="en"><p><strong>H5 Project</strong> <em>"Her Time, Written on This Map"</em> created an <strong>interactive H5 story</strong> about educator Zhang Guimei, blending digital storytelling with user-centered design.</p></div><div data-lang="zh"><p><strong>H5 项目</strong><em>《她的时间，写在这张地图上》</em>，一个关于教育家张桂梅的<strong>交互式 H5 叙事</strong>，把数字叙事和以用户为中心的设计揉在一起。</p></div>
+  <div data-lang="en"><p><strong>H5 Project</strong> <em>"Her Time, Written on This Map"</em> created an <strong>interactive H5 story</strong> about educator Zhang Guimei, blending digital storytelling with user-centered design.</p></div><div data-lang="zh"><p><strong>H5 项目</strong><em>《她的时光，写在这张地图上》</em>，一个关于教育家张桂梅的<strong>交互式 H5 叙事</strong>，把数字叙事和以用户为中心的设计揉在一起。</p></div>
 </div>
 <div class="tl-item tl-item--create reveal">
   <p class="tl-date"><span data-lang="en">Sept</span><span data-lang="zh">9月</span></p>
